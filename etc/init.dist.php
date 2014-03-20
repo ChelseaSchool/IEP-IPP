@@ -1,23 +1,26 @@
 <?php
 
-/* Notes
+/*!
+ *  Notes
  * Summary: further configuration and customization at install time
  * 1. long term: install wizard should allow administrator to set these values
  * 2. Make sane values here
  * 3. Make copyright comment that follows license recommendation
+ */
 
     //***************USER CONFIGURABLE**************
-    //Do we need to run the wizard?
+    //! Do we need to run the wizard?
     $IPP_IS_CONFIGURED = FALSE;
 
-    //page stuff
+    //! page stuff
     $page_title = "IEP-IPP Special Education Program Plans";
     $IPP_PAGE_ROOT = "http://192.168.0.103"; //the root page.
-
-    //path to large logo for branding see the braning documentation to
-    //customize these. Typically upload a new image to images folder with
-    //a different name (this will allow you to just untar/gz any upgrades
-    //and not have to rebrand).
+	/*
+     *path to large logo for branding see the braning documentation to
+     *customize these. Typically upload a new image to images folder with
+     *a different name (this will allow you to just untar/gz any upgrades
+     *and not have to rebrand).
+     */
     $page_logo_path = IPP_PATH . "images/banner.png"; //main banner ~640 x 90px
     $PDF_LOGO_PATH = IPP_PATH . "images/logo_pb.png"; //logo on pdf ~524 x 137px
 
@@ -32,10 +35,11 @@
     $mysql_user_password = "test";
     $mysql_user_host = "192.168.0.102";
     $mysql_user_table = "users";
-    $mysql_user_select_login = "login_name";
-    $mysql_user_append_to_login = "";                  //if  we use email
-                                                       // addys to verify
-                                                       // login names via pop blank for nothing.
+    $mysql_user_select_login = "login_name";           /*
+    $mysql_user_append_to_login = "";                  *if  we use email
+                                                       *addys to verify
+                                                       *login names via pop blank for nothing.
+                                                       */
 
     $mysql_user_select_password = "unencrypted_password";
 
@@ -44,23 +48,24 @@
     $mysql_data_username = "test";
     $mysql_data_password = "test";
     $mysql_data_host = "192.168.0.102";
-
-    //Email related. If you enable email notifications
-    //the system uses the usernames for this system
-    //appended to the $append_to_username field.
+	 /*
+     *Email related. If you enable email notifications
+     *the system uses the usernames for this system
+     *appended to the $append_to_username field.
+     */
     $enable_email_notification = TRUE; //true if you want to get ipp handovers notices, etc
     $append_to_username = "";  //if we use email addresses
     $email_reply_address = "no-reply@fully.qualified.domain.name"; //Address to send the email from
     $mail_host = "localhost";
 
-    //security
+    //! security
     $IPP_TIMEOUT = "60"; //minutes to timeout a login.
     
-    //colours
+    //! colours
     $IPP_BGCOLOUR1 = "#E0E2F2";   //the main background colour
 
     $IPP_CONFIGURATION_VERSION="1.0.006"; //This config file version
-    //minimum permission levels 0 is toplevel...100 is everybody
+    //! minimum permission levels 0 is toplevel...100 is everybody
     /*
      *  0 Super Administrator
      * 10 Administrator
