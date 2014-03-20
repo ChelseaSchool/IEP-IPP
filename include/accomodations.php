@@ -1,5 +1,59 @@
 <?php
 
+/*!
+
+* @brief { Sets up the place where student accomedations are stored}
+
+*/
+
+/*!
+
+* @details { make the login system, atomatic log off if not active, chose Java as script language and makes the file format for icons }
+
+*/
+
+/*!
+
+* @copyright { 2014 Copyright Chelsea School }
+
+*/
+
+
+/*!
+
+* @copyright { 2005 Grassland Regional Division 6 }
+
+*/
+
+/*!
+
+* @authors { developers name (legacy code), Rik Goldman, James, Paul, Micah, TJ, Bryan, Jonathan, Stephen, Alex }
+
+*/
+
+/*!
+
+* @todo { filter imput, escape output, comment on file }
+
+*/
+
+/*!
+
+* @version { 13.3.? <3/19/14> }
+
+*/
+
+/*!
+
+* verbatim { write coments about what each peice of code does  }
+
+*/
+
+/*
+
+* Bug { unfilterd input, unescaped output }
+
+*/
 //the authorization level for this page!
 $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 
@@ -22,7 +76,9 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * Path for IPP required files.
  */
-
+/*!
+ * @detail {  $MESSAGE is a hidden varible}
+ */
 $MESSAGE = "";
 
 define('IPP_PATH','../');
@@ -35,8 +91,10 @@ require_once(IPP_PATH . 'include/log.php');
 require_once(IPP_PATH . 'include/user_functions.php');
 require_once(IPP_PATH . 'include/navbar.php');
 
-header('Pragma: no-cache'); //don't cache this page!
-
+header('Pragma: no-cache');
+/*!
+ * @if ( evaluates if username & password are correc if correct exits to main page if not exitas the program)
+*/
 if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
@@ -53,7 +111,9 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     }
 }
 //************* SESSION active past here **************************
-
+/*!
+ * if ( needs student id to acess files)
+ */
 $student_id="";
 if(isset($_GET['student_id'])) $student_id= $_GET['student_id'];
 if(isset($_POST['student_id'])) $student_id = $_POST['student_id'];
@@ -286,6 +346,9 @@ if(!$accomodation_result) {
                   }
               }
           }
+/*!
+* @detail {describes Java script the language of the file}
+*/
           if(!count) { alert("Nothing Selected"); return false; }
           if(confirm(szConfirmMessage))
               return true;
