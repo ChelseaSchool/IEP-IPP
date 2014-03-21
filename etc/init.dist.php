@@ -1,5 +1,5 @@
 <?php
-    //***************USER CONFIGURABLE**************
+    //***************USER CONFIGURABLE**************/
     //Do we need to run the wizard?
     $IPP_IS_CONFIGURED = FALSE;
 

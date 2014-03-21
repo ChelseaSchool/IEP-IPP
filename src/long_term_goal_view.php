@@ -99,7 +99,7 @@ if($our_permission == "WRITE" || $our_permission == "ASSIGN" || $our_permission 
 
 //************** validated past here SESSION ACTIVE WRITE PERMISSION CONFIRMED****************
 
-$student_query = "SELECT * FROM student WHERE student_id = " . addslashes($student_id);
+$student_query = "SELECT * FROM student WHERE student_id = " . mysql_real_escape_string($student_id);
 $student_result = mysql_query($student_query);
 if(!$student_result) {
     $error_message = $error_message . "Database query failed (" . __FILE__ . ":" . __LINE__ . "): " . mysql_error() . "<BR>Query: '$student_query'<BR>";
@@ -148,7 +148,7 @@ if(isset($_GET['deleteLTG']) && $have_write_permission) {
        IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
    }  else {
      //delete the ltg's
-     $update_query = "DELETE FROM long_term_goal WHERE goal_id=" . addslashes($_GET['deleteLTG']);
+     $update_query = "DELETE FROM long_term_goal WHERE goal_id=" . mysql_real_escape_string($_GET['deleteLTG']);
      $update_result = mysql_query($update_query);
      if(!$update_result) {
        $error_message = $error_message . "Database query failed (" . __FILE__ . ":" . __LINE__ . "): " . mysql_error() . "<BR>Query: '$update_query'<BR>";
