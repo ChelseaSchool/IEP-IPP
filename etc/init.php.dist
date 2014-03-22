@@ -1,6 +1,10 @@
 <?php
 
-/* NOTES
+/**
+ * @TODO Send help - can't find where close comment should go
+ * @BRIEF Configuration variables (1 of 2) Which is in play?
+ * @DETAILS
+ * NOTES
  * 1. Absract: configurable values on install
  * 2. should be handled by install wizard; default values or example values are ok; required values should be clearly marked as such
  * 3. page needs copyright header per GPL recommendation
