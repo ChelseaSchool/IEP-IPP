@@ -5,6 +5,7 @@
  * 1. long term: install wizard should allow administrator to set these values
  * 2. Make sane values here
  * 3. Make copyright comment that follows license recommendation
+ */
 
     //***************USER CONFIGURABLE**************
     //Do we need to run the wizard?
