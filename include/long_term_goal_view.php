@@ -41,14 +41,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . '''login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . '''login.php');
         exit();
     }
 }
@@ -69,7 +69,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . '''security_error.php');
     exit();
 }
 
@@ -86,7 +86,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . '''security_error.php');
     exit();
 }
 
@@ -301,7 +301,7 @@ if(!$area_type_result) {
 
                         <!-- BEGIN add new entry -->
                         <center>
-                        <form name="add_long_term_goal" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/long_term_goal_view.php"; ?>" method="get" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
+                        <form name="add_long_term_goal" enctype="multipart/form-data" action="<?php echo IPP_PATH . "''long_term_goal_view.php"; ?>" method="get" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
                         <table border="0" cellspacing="0" cellpadding ="0" width="80%">
                         <tr>
                           <td colspan="3">
@@ -351,11 +351,11 @@ if(!$area_type_result) {
                         <table width="80%" border="0" cellpadding="0" cellspacing="0">
                         <?php
                         while($goal = mysql_fetch_array($long_goal_result)) {
-                            echo "<tr><td colspan=\"2\" class=\"wrap_top\"><a href=\"" . IPP_PATH . "src/long_term_goal_view.php?student_id=" . $student_id . "&setCompleted=" . $goal['goal_id'] . "\"";
+                            echo "<tr><td colspan=\"2\" class=\"wrap_top\"><a href=\"" . IPP_PATH . "''long_term_goal_view.php?student_id=" . $student_id . "&setCompleted=" . $goal['goal_id'] . "\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             else echo "onClick=\"return changeStatusCompleted();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Set+Achieved\" border=\"0\" width=\"100\" height=\"25\" ></a>";
-                            echo "&nbsp;<a href=\"" . IPP_PATH . "src/long_term_goal_view.php?student_id=" . $student_id . "&deleteGoal=" . $goal['goal_id'] . "\"";
+                            echo "&nbsp;<a href=\"" . IPP_PATH . "''long_term_goal_view.php?student_id=" . $student_id . "&deleteGoal=" . $goal['goal_id'] . "\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             else echo "onClick=\"return changeStatusCompleted();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Delete\" border=\"0\" width=\"100\" height=\"25\" ></a>";
@@ -398,7 +398,7 @@ if(!$area_type_result) {
                             }
                             //end guardian notes
                             echo "</td>\n";
-                            echo "<td class=\"wrap_bottom_right\" width=\"100\"><a href=\"" . IPP_PATH . "src/short_term_objectives.php?goal_id=" . $goal['goal_id'] ."\"";
+                            echo "<td class=\"wrap_bottom_right\" width=\"100\"><a href=\"" . IPP_PATH . "''short_term_objectives.php?goal_id=" . $goal['goal_id'] ."\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Edit\" border=\"0\" width=\"100\" height=\"25\"></td>";
                             echo "</tr>\n";
@@ -415,7 +415,7 @@ if(!$area_type_result) {
                         <table width="80%" border="0" cellpadding="0" cellspacing="0">
                         <?php
                         while($completed_goal = mysql_fetch_array($long_completed_goal_result)) {
-                            echo "<tr><td colspan=\"2\" class=\"wrap_top\">" . $guardian['last_name'] . "," . $guardian['first_name'] . "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "src/guardian_view.php?student_id=" . $student_id . "&setGuardian=" . $guardian['uid'] . "\"";
+                            echo "<tr><td colspan=\"2\" class=\"wrap_top\">" . $guardian['last_name'] . "," . $guardian['first_name'] . "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "''guardian_view.php?student_id=" . $student_id . "&setGuardian=" . $guardian['uid'] . "\"";
                             if($have_write_permission) echo "onclick=\"return changeStatusGuardian();\"";
                             else echo "onclick=\"return noPermission();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Change Status\" border=\"0\" width=\"100\" height=\"25\"></a>&nbsp;&nbsp;<a href=\"" . IPP_PATH . "notyetimplemented.php" . "\" onClick=\"return notYetImplemented();\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Involvement\" border=\"0\" width=\"100\" height=\"25\"></a></td></tr>\n";
@@ -436,7 +436,7 @@ if(!$area_type_result) {
                             echo $cpc . "<BR>\n";
                             echo $guardian['postal_code'] . "<BR><BR>\n";
                             echo "</center></td>";
-                            echo "<td class=\"wrap_right\" width=\"100\"><a href=\"" . IPP_PATH . "src/edit_address.php?student_id=" . $_GET['student_id'] . "&target=guardian&guardian_id=" . $guardian['guardian_id'] . "\"";
+                            echo "<td class=\"wrap_right\" width=\"100\"><a href=\"" . IPP_PATH . "''edit_address.php?student_id=" . $_GET['student_id'] . "&target=guardian&guardian_id=" . $guardian['guardian_id'] . "\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Edit Contact\" border=\"0\" width=\"100\" height=\"25\"></td>";
                             echo "</tr>\n";
@@ -482,7 +482,7 @@ if(!$area_type_result) {
                             }
                             //end guardian notes
                             echo "</td>\n";
-                            echo "<td class=\"wrap_bottom_right\" width=\"100\"><a href=\"" . IPP_PATH . "src/guardian_notes.php?guardian_id=" . $guardian['guardian_id'] . "&student_id=" . $student_row['student_id'] ."\"";
+                            echo "<td class=\"wrap_bottom_right\" width=\"100\"><a href=\"" . IPP_PATH . "''guardian_notes.php?guardian_id=" . $guardian['guardian_id'] . "&student_id=" . $student_row['student_id'] ."\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Notes\" border=\"0\" width=\"100\" height=\"25\"></td>";
                             echo "</tr>\n";
@@ -504,8 +504,8 @@ if(!$area_type_result) {
             <td class="shadow-left">&nbsp;</td>
             <td class="shadow-center"><table border="0" width="100%"><tr><td width="60"><a href="
             <?php
-                echo IPP_PATH . "src/student_view.php?student_id=" . $student_row['student_id'];
-            ?>"><img src="<?php echo IPP_PATH; ?>images/back-arrow.png" border=0></a></td><td width="60"><a href="<?php echo IPP_PATH . "src/main.php"; ?>"><img src="<?php echo IPP_PATH; ?>images/homebutton.png" border=0></a></td><td valign="bottom" align="center">Logged in as: <?php echo $_SESSION['egps_username'];?></td><td align="right"><a href="<?php echo IPP_PATH;?>"><img src="<?php echo IPP_PATH; ?>images/logout.png" border=0></a></td></tr></table></td>
+                echo IPP_PATH . "''student_view.php?student_id=" . $student_row['student_id'];
+            ?>"><img src="<?php echo IPP_PATH; ?>images/back-arrow.png" border=0></a></td><td width="60"><a href="<?php echo IPP_PATH . "''main.php"; ?>"><img src="<?php echo IPP_PATH; ?>images/homebutton.png" border=0></a></td><td valign="bottom" align="center">Logged in as: <?php echo $_SESSION['egps_username'];?></td><td align="right"><a href="<?php echo IPP_PATH;?>"><img src="<?php echo IPP_PATH; ?>images/logout.png" border=0></a></td></tr></table></td>
             <td class="shadow-right">&nbsp;</td>
         </tr>
         <tr>

@@ -11,7 +11,7 @@
 if(realpath ($_SERVER["SCRIPT_FILENAME"]) == realpath (__FILE__)) {
   $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
   IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-  require(IPP_PATH . 'src/security_error.php');
+  require(IPP_PATH . '''security_error.php');
   exit();
 }
 
