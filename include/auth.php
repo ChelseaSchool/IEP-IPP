@@ -285,21 +285,21 @@
 
         //special case for 'manage ipp users'...
         if($PERMISSION_LEVEL == 0 || $is_local_ipp_administrator)  {
-           array_push($retval,new service("Manage Users",IPP_PATH . "''superuser_manage_users.php"));
+           array_push($retval,new service("Manage Users",IPP_PATH . "superuser_manage_users.php"));
         }
 
         switch($PERMISSION_LEVEL) {
             case 0: // super administrator level
-                //array_push($retval,new service("Manage IPP Users",IPP_PATH . "''superuser_manage_users.php"));
+                //array_push($retval,new service("Manage IPP Users",IPP_PATH . "superuser_manage_users.php"));
                 array_push($retval,new service("View Logs",IPP_PATH . "superuser_view_logs.php"));
-                //$retval[0] = new service("Manage IPP Users",IPP_PATH . "''superuser_manage_users.php");
-                //$retval[1] = new service("Manage IPP Users",IPP_PATH . "''superuser_manage_users.php");
+                //$retval[0] = new service("Manage IPP Users",IPP_PATH . "superuser_manage_users.php");
+                //$retval[1] = new service("Manage IPP Users",IPP_PATH . "superuser_manage_users.php");
                 array_push($retval,new service("Schools",IPP_PATH . "school_info.php"));
                 array_push($retval,new service("Manage Codes",IPP_PATH . "superuser_manage_coding.php"));
                 array_push($retval,new service("User Audit",IPP_PATH . "user_audit.php"));
             case 10: //admin
             case 20: //asst.admin.
-                //array_push($retval,new service("Program Areas",IPP_PATH . "''superuser_add_program_area.php"));
+                //array_push($retval,new service("Program Areas",IPP_PATH . "superuser_add_program_area.php"));
                 array_push($retval,new service("Goals Database",IPP_PATH . "superuser_add_goals.php"));
             case 30: //principal...
             case 40: //vice principal
