@@ -1,5 +1,14 @@
 <?php
 
+/**@file
+ * @brief		Cleanup after install
+ * @author		M. Nielson
+ * @copyright	2005 Grasslands Regional Division #6
+ * @copyright	GNU GPLv2
+ * @todo		Clean up commented code
+ * @bug
+ */
+ 
  //set the config file flag to prevent security problems with this install directory.
 $file=file("../etc/init.php");
                if(!$file) $MESSAGE .= "Cannot open init.php configuration file. You will need to manually set IPP_IS_CONFIGURED to true<BR>";
@@ -21,15 +30,7 @@ $file=file("../etc/init.php");
 
 //the authorization level for this page!
 $MINIMUM_AUTHORIZATION_LEVEL = 100;
-/**
- * install wizard
- *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
- *
- * Created: February 17, 2007.
- * By: M. Nielsen
- */
+
 
 /**
  * Path for required files.
@@ -59,12 +60,8 @@ header('Pragma: no-cache'); //don't cache this page!
             @import "../layout/greenborders.css";
         -->
     </style>
-    <!-- All code Copyright &copy; 2005 Grasslands Regional Division #6.
-         -Concept and Design by Grasslands IPP Focus Group 2005
-         -Programming and Database Design by M. Nielsen, Grasslands
-          Regional Division #6
-         -CSS and layout images are courtesy A. Clapton.
-     -->
+
+ 
 </HEAD>
     <BODY>
         <table class="shadow" border="0" cellspacing="0" cellpadding="0" align="center">  
@@ -116,6 +113,6 @@ header('Pragma: no-cache'); //don't cache this page!
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+     
     </BODY>
 </HTML>
