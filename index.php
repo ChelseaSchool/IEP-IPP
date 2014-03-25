@@ -80,7 +80,7 @@ if(isset($LOGIN_NAME)) $LOGIN_NAME = $LOGIN_NAME; else $LOGIN_NAME="";
                                 <?php if ($MESSAGE) { echo "<center><table width=\"80%\"><tr><td><p class=\"message\">" . $MESSAGE . "</p></td></tr></table></center>";} ?>
 <BR><BR>
                         <center><table><tr><td><center><p class="header">- IEP-IPP Login -</p></center></td></tr></table></center>
-                        <form enctype="multipart/form-data" action="<?php echo IPP_PATH . 'src/main.php'; ?>" method="post">
+                        <form enctype="multipart/form-data" action="<?php echo IPP_PATH . 'main.php'; ?>" method="post">
                         <center><table>
                             <tr>
                                 <td>
