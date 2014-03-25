@@ -44,7 +44,7 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         if(isset($_SESSION['egps_username'])) IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
         else IPP_LOG($MESSAGE,'no session','ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
@@ -52,7 +52,7 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         if(isset($_SESSION['egps_username'])) IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
         else IPP_LOG($MESSAGE,"no session",'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -62,7 +62,7 @@ $permission_level=getPermissionLevel($_SESSION['egps_username']);
 if($permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -76,7 +76,7 @@ if(!$services) {
 }
 
 ?> 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE HTML PUBLIC "//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
 <HEAD>
     <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
@@ -115,7 +115,7 @@ if(!$services) {
                         <div id="main">
                         <?php if ($MESSAGE) { echo "<center><table width=\"80%\"><tr><td><p class=\"message\">" . $MESSAGE . "</p></td></tr></table></center>";} ?>
 
-                        <center><table><tr><td><center><p class="header">- Home -</p></center></td></tr></table></center>
+                        <center><table><tr><td><center><p class="header">MyIEP - Home -</p></center></td></tr></table></center>
                         <?php
                             $index = count($services);
                             //display list of menu options
