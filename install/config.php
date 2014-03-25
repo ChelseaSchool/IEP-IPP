@@ -9,24 +9,17 @@ if(is_file("../etc/init.php")) {
 
 //the authorization level for this page!
 $MINIMUM_AUTHORIZATION_LEVEL = 100;
-/**
- * install wizard
- *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
- *
- * Created: February 17, 2007.
- * By: M. Nielsen
- */
 
-/**
- * Path for required files.
- */
+
+
 error_reporting(1);
 
 $MESSAGE = "";
 
-/* eGPS required files. */
+/**
+ * Path for required files.
+ */
+
 //require_once(IPP_PATH . 'etc/init.php');
 //require_once(IPP_PATH . 'include/db.php');
 //require_once(IPP_PATH . 'include/auth.php');

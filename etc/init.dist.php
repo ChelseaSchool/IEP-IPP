@@ -11,7 +11,7 @@
     $IPP_IS_CONFIGURED = FALSE;
 
     //page stuff
-    $page_title = "IEP-IPP Special Education Program Plans";
+    $page_title = "MyIEP";
     $IPP_PAGE_ROOT = "http://192.168.0.103"; //the root page.
 
     //path to large logo for branding see the braning documentation to
