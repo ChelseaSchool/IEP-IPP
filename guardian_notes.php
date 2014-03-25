@@ -51,14 +51,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -69,7 +69,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -102,7 +102,7 @@ while($guardian_row=mysql_fetch_array($guardian_result)) {
 if(!$have_permission) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -234,7 +234,7 @@ mysql_data_seek($guardian_result,0);
                         </center>
 
                         <!-- BEGIN Add Note -->
-                        <form name="addnote" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/guardian_notes.php"; ?>" method="get">
+                        <form name="addnote" enctype="multipart/form-data" action="<?php echo IPP_PATH . "guardian_notes.php"; ?>" method="get">
                         <center>
                         <table width="80%" border="0" cellpadding="0" cellspacing="0">
                         <input type="hidden" name="guardian_id" value="<?php echo $target_row['guardian_id']; ?>">
@@ -254,7 +254,7 @@ mysql_data_seek($guardian_result,0);
                         <BR><BR>
 
                         <!--BEGIN notes table -->
-                        <form name="notelist" onSubmit="return deleteChecked()" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/guardian_notes.php"; ?>" method="get">
+                        <form name="notelist" onSubmit="return deleteChecked()" enctype="multipart/form-data" action="<?php echo IPP_PATH . "guardian_notes.php"; ?>" method="get">
                         <center><table width="80%" border="0">
                         <input type="hidden" name="guardian_id" value="<?php echo $target_row['guardian_id']; ?>">
                         <input type="hidden" name="student_id" value="<?php echo $_GET['student_id']; ?>">

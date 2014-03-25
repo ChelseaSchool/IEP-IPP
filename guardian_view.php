@@ -42,14 +42,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -60,7 +60,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -147,7 +147,7 @@ if($our_permission != "READ" && $our_permission != "WRITE" && $our_permission !=
   //we don't have permission...
   $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
   IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-  require(IPP_PATH . 'src/security_error.php');
+  require(IPP_PATH . 'security_error.php');
   exit();
 }
 
@@ -243,23 +243,23 @@ if($our_permission != "WRITE" && $our_permission != "ASSIGN" && $our_permission 
 
                         <HR>
                         <!-- BEGIN  Current Guardian Info -->
-                        <table width="100%"><tr><td width="200"><p class="header" align="left">Current&nbsp;Guardian(s):</p></td><td align="left"><a href="<?php echo IPP_PATH . "src/add_guardian.php?student_id=" . $student_row['student_id'];?>" <?php if (!$have_write_permission) echo "onClick=\"return noPermission();\""; ?>><img src="<?php echo IPP_PATH . "images/smallbutton.php?title=New Guardian";?>" border="0"></a></td></tr></table>
+                        <table width="100%"><tr><td width="200"><p class="header" align="left">Current&nbsp;Guardian(s):</p></td><td align="left"><a href="<?php echo IPP_PATH . "add_guardian.php?student_id=" . $student_row['student_id'];?>" <?php if (!$have_write_permission) echo "onClick=\"return noPermission();\""; ?>><img src="<?php echo IPP_PATH . "images/smallbutton.php?title=New Guardian";?>" border="0"></a></td></tr></table>
                         <BR>
                         <center>
                         <table width="80%" border="0" cellpadding="0" cellspacing="0">
                         <?php
                         while($guardian = mysql_fetch_array($guardians_result)) {
-                            echo "<tr><td colspan=\"2\" class=\"wrap_top\">" . $guardian['last_name'] . "," . $guardian['first_name'] . "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "src/guardian_view.php?student_id=" . $student_id . "&setNotGuardian=" . $guardian['uid'] . "\"";
+                            echo "<tr><td colspan=\"2\" class=\"wrap_top\">" . $guardian['last_name'] . "," . $guardian['first_name'] . "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "guardian_view.php?student_id=" . $student_id . "&setNotGuardian=" . $guardian['uid'] . "\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             else echo "onClick=\"return changeStatusNotGuardian();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Change Status\" border=\"0\" width=\"100\" height=\"25\" ></a>\n";
 
-                            echo "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "src/guardian_view.php?student_id=" . $student_id . "&deleteGuardian=" . $guardian['uid'] . "\"";
+                            echo "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "guardian_view.php?student_id=" . $student_id . "&deleteGuardian=" . $guardian['uid'] . "\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             else echo "onClick=\"return deleteGuardian();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Delete\" border=\"0\" width=\"100\" height=\"25\" ></a>\n";
 
-                            echo "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "src/edit_address.php?student_id=" . $student_id . "&target=guardian&guardian_id=" . $guardian['guardian_id'] . "\"";
+                            echo "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "edit_address.php?student_id=" . $student_id . "&target=guardian&guardian_id=" . $guardian['guardian_id'] . "\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Edit Name\" border=\"0\" width=\"100\" height=\"25\">";
 
@@ -278,7 +278,7 @@ if($our_permission != "WRITE" && $our_permission != "ASSIGN" && $our_permission 
                             echo $cpc . "<BR>\n";
                             echo $guardian['postal_code'] . "<BR><BR>\n";
                             echo "</center></td>";
-                            echo "<td class=\"wrap_right\" width=\"100\"><a href=\"" . IPP_PATH . "src/edit_address.php?student_id=" . $_GET['student_id'] . "&target=guardian&guardian_id=" . $guardian['guardian_id'] . "\"";
+                            echo "<td class=\"wrap_right\" width=\"100\"><a href=\"" . IPP_PATH . "edit_address.php?student_id=" . $_GET['student_id'] . "&target=guardian&guardian_id=" . $guardian['guardian_id'] . "\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Edit Contact\" border=\"0\" width=\"100\" height=\"25\"></td>";
                             echo "</tr>\n";
@@ -324,7 +324,7 @@ if($our_permission != "WRITE" && $our_permission != "ASSIGN" && $our_permission 
                             }
                             //end guardian notes
                             echo "</td>\n";
-                            echo "<td class=\"wrap_bottom_right\" width=\"100\"><a href=\"" . IPP_PATH . "src/guardian_notes.php?guardian_id=" . $guardian['guardian_id'] . "&student_id=" . $student_row['student_id'] . "\"";
+                            echo "<td class=\"wrap_bottom_right\" width=\"100\"><a href=\"" . IPP_PATH . "guardian_notes.php?guardian_id=" . $guardian['guardian_id'] . "&student_id=" . $student_row['student_id'] . "\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Notes\" border=\"0\" width=\"100\" height=\"25\"></td>";
                             echo "</tr>\n";
@@ -341,17 +341,17 @@ if($our_permission != "WRITE" && $our_permission != "ASSIGN" && $our_permission 
                         <table width="80%" border="0" cellpadding="0" cellspacing="0">
                         <?php
                         while($guardian = mysql_fetch_array($previous_guardians_result)) {
-                            echo "<tr><td colspan=\"2\" class=\"wrap_top\">" . $guardian['last_name'] . "," . $guardian['first_name'] . "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "src/guardian_view.php?student_id=" . $student_id . "&setGuardian=" . $guardian['uid'] . "\"";
+                            echo "<tr><td colspan=\"2\" class=\"wrap_top\">" . $guardian['last_name'] . "," . $guardian['first_name'] . "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "guardian_view.php?student_id=" . $student_id . "&setGuardian=" . $guardian['uid'] . "\"";
                             if($have_write_permission) echo "onclick=\"return changeStatusGuardian();\"";
                             else echo "onclick=\"return noPermission();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Change Status\" border=\"0\" width=\"100\" height=\"25\"></a>";
 
-                            echo "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "src/guardian_view.php?student_id=" . $student_id . "&deleteGuardian=" . $guardian['uid'] . "\"";
+                            echo "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "guardian_view.php?student_id=" . $student_id . "&deleteGuardian=" . $guardian['uid'] . "\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             else echo "onClick=\"return deleteGuardian();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Delete\" border=\"0\" width=\"100\" height=\"25\" ></a>\n";
 
-                            echo "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "src/edit_address.php?student_id=" . $student_id . "&target=guardian&guardian_id=" . $guardian['guardian_id'] . "\"";
+                            echo "&nbsp;&nbsp;<a href=\"" . IPP_PATH . "edit_address.php?student_id=" . $student_id . "&target=guardian&guardian_id=" . $guardian['guardian_id'] . "\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Edit Name\" border=\"0\" width=\"100\" height=\"25\">";
 
@@ -373,7 +373,7 @@ if($our_permission != "WRITE" && $our_permission != "ASSIGN" && $our_permission 
                             echo $cpc . "<BR>\n";
                             echo $guardian['postal_code'] . "<BR><BR>\n";
                             echo "</center></td>";
-                            echo "<td class=\"wrap_right\" width=\"100\"><a href=\"" . IPP_PATH . "src/edit_address.php?student_id=" . $_GET['student_id'] . "&target=guardian&guardian_id=" . $guardian['guardian_id'] . "\"";
+                            echo "<td class=\"wrap_right\" width=\"100\"><a href=\"" . IPP_PATH . "edit_address.php?student_id=" . $_GET['student_id'] . "&target=guardian&guardian_id=" . $guardian['guardian_id'] . "\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Edit Contact\" border=\"0\" width=\"100\" height=\"25\"></td>";
                             echo "</tr>\n";
@@ -419,7 +419,7 @@ if($our_permission != "WRITE" && $our_permission != "ASSIGN" && $our_permission 
                             }
                             //end guardian notes
                             echo "</td>\n";
-                            echo "<td class=\"wrap_bottom_right\" width=\"100\"><a href=\"" . IPP_PATH . "src/guardian_notes.php?guardian_id=" . $guardian['guardian_id'] . "&student_id=" . $student_row['student_id'] ."\"";
+                            echo "<td class=\"wrap_bottom_right\" width=\"100\"><a href=\"" . IPP_PATH . "guardian_notes.php?guardian_id=" . $guardian['guardian_id'] . "&student_id=" . $student_row['student_id'] ."\"";
                             if (!$have_write_permission) echo "onClick=\"return noPermission();\"";
                             echo "><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Notes\" border=\"0\" width=\"100\" height=\"25\"></td>";
                             echo "</tr>\n";

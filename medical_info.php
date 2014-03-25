@@ -47,14 +47,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -75,7 +75,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -335,7 +335,7 @@ if(!$medical_result) {
 
                         <!-- BEGIN add new entry -->
                         <center>
-                        <form name="add_medical_info" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/medical_info.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
+                        <form name="add_medical_info" enctype="multipart/form-data" action="<?php echo IPP_PATH . "medical_info.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
                         <table border="0" cellspacing="0" cellpadding ="0" width="80%">
                         <tr>
                           <td colspan="3">
@@ -379,7 +379,7 @@ if(!$medical_result) {
                         <!-- END add new entry -->
 
                         <!-- BEGIN medical table -->
-                        <form name="medicalinfo" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/medical_info.php"; ?>" method="get">
+                        <form name="medicalinfo" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "medical_info.php"; ?>" method="get">
                         <input type="hidden" name="student_id" value="<?php echo $student_id ?>">
                         <center><table width="80%" border="0" cellpadding="0" cellspacing="1">
                         <tr><td colspan="7">Current Medical Information (click to edit):</td></tr>
@@ -392,11 +392,11 @@ if(!$medical_result) {
                             echo "<tr>\n";
                             echo "<td bgcolor=\"#E0E2F2\"><input type=\"checkbox\" name=\"" . $medical_row['uid'] . "\"></td>";
                             echo "<td bgcolor=\"$bgcolor\" class=\"row_default\">" . $medical_row['uid'] . "</td>";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_medical_info.php?uid=" . $medical_row['uid'] . "\" class=\"editable_text\">" . $medical_row['date']  ."</a></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_medical_info.php?uid=" . $medical_row['uid'] . "\" class=\"editable_text\">" . checkSpelling($medical_row['description'])  ."</a></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center><a href=\"" . IPP_PATH . "src/edit_medical_info.php?uid=" . $medical_row['uid'] . "\" class=\"editable_text\">" . $medical_row['copy_in_file'] . "</a></center></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center><a href=\"" . IPP_PATH . "src/edit_medical_info.php?uid=" . $medical_row['uid'] . "\" class=\"editable_text\">"; if($medical_row['is_priority'] == "Y") echo "<img src=\"" . IPP_PATH . "images/caution.gif" . "\" border=\"0\">"; else echo "N"; echo "</a></center></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>"; if($medical_row['filename'] =="") echo "-none-"; else echo "<a href=\"" . IPP_PATH . "src/get_attached.php?table=medical_info&uid=" . $medical_row['uid'] ."&student_id=" . $student_id ."\">Download</a>"; echo "</center></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_medical_info.php?uid=" . $medical_row['uid'] . "\" class=\"editable_text\">" . $medical_row['date']  ."</a></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_medical_info.php?uid=" . $medical_row['uid'] . "\" class=\"editable_text\">" . checkSpelling($medical_row['description'])  ."</a></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center><a href=\"" . IPP_PATH . "edit_medical_info.php?uid=" . $medical_row['uid'] . "\" class=\"editable_text\">" . $medical_row['copy_in_file'] . "</a></center></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center><a href=\"" . IPP_PATH . "edit_medical_info.php?uid=" . $medical_row['uid'] . "\" class=\"editable_text\">"; if($medical_row['is_priority'] == "Y") echo "<img src=\"" . IPP_PATH . "images/caution.gif" . "\" border=\"0\">"; else echo "N"; echo "</a></center></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>"; if($medical_row['filename'] =="") echo "-none-"; else echo "<a href=\"" . IPP_PATH . "get_attached.php?table=medical_info&uid=" . $medical_row['uid'] ."&student_id=" . $student_id ."\">Download</a>"; echo "</center></td>\n";
                             echo "</tr>\n";
                             if($bgcolor=="#DFDFDF") $bgcolor="#CCCCCC";
                             else $bgcolor="#DFDFDF";

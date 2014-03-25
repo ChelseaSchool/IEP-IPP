@@ -48,14 +48,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -76,7 +76,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -215,7 +215,7 @@ if(!$snapshot_result) {
 
                         <!-- BEGIN add new entry -->
                         <center>
-                        <form name="add_snapshot" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/snapshots.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
+                        <form name="add_snapshot" enctype="multipart/form-data" action="<?php echo IPP_PATH . "snapshots.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
                         <table border="0" cellspacing="0" cellpadding ="0" width="80%">
                         <tr>
                           <td>
@@ -233,7 +233,7 @@ if(!$snapshot_result) {
                         <!-- END add new entry -->
 
                         <!-- BEGIN snapshot table -->
-                        <form name="snapshots" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/snapshots.php"; ?>" method="get">
+                        <form name="snapshots" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "snapshots.php"; ?>" method="get">
                         <input type="hidden" name="student_id" value="<?php echo $student_id ?>">
                         <center><table width="80%" border="0" cellpadding="0" cellspacing="1">
                         <tr><td colspan="4">Current Snapshots:</td></tr>
@@ -247,7 +247,7 @@ if(!$snapshot_result) {
                             echo "<td bgcolor=\"#E0E2F2\"><input type=\"checkbox\" name=\"" . $snapshot_row['uid'] . "\"></td>";
                             echo "<td bgcolor=\"$bgcolor\" class=\"row_default\">" . $snapshot_row['uid'] . "</td>";
                             echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>" . $snapshot_row['date']  ."</center></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>"; if($snapshot_row['filename'] =="") echo "-error-"; else echo "<a href=\"" . IPP_PATH . "src/get_attached.php?table=snapshot&uid=" . $snapshot_row['uid'] ."&student_id=" . $student_id . "\">View <img src=\"" . IPP_PATH . "images/pdf.png" . "\" border=\"0\"></a>"; echo "</center></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>"; if($snapshot_row['filename'] =="") echo "-error-"; else echo "<a href=\"" . IPP_PATH . "get_attached.php?table=snapshot&uid=" . $snapshot_row['uid'] ."&student_id=" . $student_id . "\">View <img src=\"" . IPP_PATH . "images/pdf.png" . "\" border=\"0\"></a>"; echo "</center></td>\n";
                             echo "</tr>\n";
                             if($bgcolor=="#DFDFDF") $bgcolor="#CCCCCC";
                             else $bgcolor="#DFDFDF";

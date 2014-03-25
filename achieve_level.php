@@ -56,14 +56,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -84,7 +84,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -310,7 +310,7 @@ if(!$performance_result) {
 
                         <!-- BEGIN add new entry -->
                         <center>
-                        <form name="add_performance_testing" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/achieve_level.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
+                        <form name="add_performance_testing" enctype="multipart/form-data" action="<?php echo IPP_PATH . "achieve_level.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
                         <table border="0" cellspacing="0" cellpadding ="0" width="80%">
                         <tr>
                           <td colspan="3">
@@ -347,7 +347,7 @@ if(!$performance_result) {
                         <!-- END add new entry -->
 
                         <!-- BEGIN strength/needs table -->
-                        <form name="performancetesting" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/achieve_level.php"; ?>" method="get">
+                        <form name="performancetesting" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "achieve_level.php"; ?>" method="get">
                         <input type="hidden" name="student_id" value="<?php echo $student_id ?>">
                         <center><table width="80%" border="0" cellpadding="0" cellspacing="1">
                         <tr><td colspan="6">Achievement Levels:</td></tr>
@@ -360,11 +360,11 @@ if(!$performance_result) {
                             echo "<tr>\n";
                             echo "<td bgcolor=\"#E0E2F2\"><input type=\"checkbox\" name=\"" . $performance_testing_row['uid'] . "\"></td>";
                             echo "<td bgcolor=\"$bgcolor\" class=\"row_default\">" . $performance_testing_row['uid'] . "</td>";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_achieve_level.php?uid=" . $performance_testing_row['uid'] . "\" class=\"editable_text\">" . $performance_testing_row['test_name']  ."</a></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_achieve_level.php?uid=" . $performance_testing_row['uid'] . "\" class=\"editable_text\">" . checkSpelling($performance_testing_row['results'])  ."</a></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_achieve_level.php?uid=" . $performance_testing_row['uid'] . "\" class=\"editable_text\">" . $performance_testing_row['date'] . "</a></td>\n";
-                            //echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>"; if($coord_row['report_in_file'] =="") echo "-none"; else echo "<a href=\"javascript: openDoc('" . IPP_PATH . "src/get_attached.php?table=coordination_of_services&uid=" . $coord_row['uid'] ."&student_id=" . $student_id ."','_doc')"  . "\">File</a>"; echo "</center></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>"; if($performance_testing_row['filename'] =="") echo "-none-"; else echo "<a href=\"" . IPP_PATH . "src/get_attached.php?table=performance_testing&uid=" . $performance_testing_row['uid'] ."&student_id=" . $student_id ."\">Download</a>"; echo "</center></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_achieve_level.php?uid=" . $performance_testing_row['uid'] . "\" class=\"editable_text\">" . $performance_testing_row['test_name']  ."</a></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_achieve_level.php?uid=" . $performance_testing_row['uid'] . "\" class=\"editable_text\">" . checkSpelling($performance_testing_row['results'])  ."</a></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_achieve_level.php?uid=" . $performance_testing_row['uid'] . "\" class=\"editable_text\">" . $performance_testing_row['date'] . "</a></td>\n";
+                            //echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>"; if($coord_row['report_in_file'] =="") echo "-none"; else echo "<a href=\"javascript: openDoc('" . IPP_PATH . "get_attached.php?table=coordination_of_services&uid=" . $coord_row['uid'] ."&student_id=" . $student_id ."','_doc')"  . "\">File</a>"; echo "</center></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>"; if($performance_testing_row['filename'] =="") echo "-none-"; else echo "<a href=\"" . IPP_PATH . "get_attached.php?table=performance_testing&uid=" . $performance_testing_row['uid'] ."&student_id=" . $student_id ."\">Download</a>"; echo "</center></td>\n";
                             echo "</tr>\n";
                             if($bgcolor=="#DFDFDF") $bgcolor="#CCCCCC";
                             else $bgcolor="#DFDFDF";

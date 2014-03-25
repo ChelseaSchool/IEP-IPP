@@ -57,14 +57,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -85,7 +85,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -259,7 +259,7 @@ $enum_options_type = mysql_enum_values("background_info","type");
 
                         <!-- BEGIN add info -->
                         <center>
-                        <form name="add_background_area" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/background_information.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
+                        <form name="add_background_area" enctype="multipart/form-data" action="<?php echo IPP_PATH . "background_information.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
                         <table border="0" cellspacing="0" cellpadding ="0" width="80%">
                         <tr>
                           <td colspan="3">
@@ -292,7 +292,7 @@ $enum_options_type = mysql_enum_values("background_info","type");
                         <!-- END add info -->
 
                         <!-- BEGIN info table -->
-                        <form name="infolist" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/background_information.php"; ?>" method="get">
+                        <form name="infolist" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "background_information.php"; ?>" method="get">
                         <input type="hidden" name="student_id" value="<?php echo $student_id ?>">
                         <center><table width="80%" border="0" cellpadding="0" cellspacing="1">
                         <tr><td colspan="6">Background Information:</td></tr>
@@ -305,8 +305,8 @@ $enum_options_type = mysql_enum_values("background_info","type");
                             echo "<tr>\n";
                             echo "<td bgcolor=\"#E0E2F2\"><input type=\"checkbox\" name=\"" . $background_info_row['uid'] . "\"></td>";
                             echo "<td bgcolor=\"$bgcolor\" class=\"row_default\">" . $background_info_row['uid'] . "</td>";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_background_information.php?uid=" . $background_info_row['uid'] . "\" class=\"editable_text\">" . $background_info_row['type']  ."</a></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_background_information.php?uid=" . $background_info_row['uid'] . "\" class=\"editable_text\">" . checkspelling($background_info_row['description']) . "</a></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_background_information.php?uid=" . $background_info_row['uid'] . "\" class=\"editable_text\">" . $background_info_row['type']  ."</a></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_background_information.php?uid=" . $background_info_row['uid'] . "\" class=\"editable_text\">" . checkspelling($background_info_row['description']) . "</a></td>\n";
                             echo "</tr>\n";
                             if($bgcolor=="#DFDFDF") $bgcolor="#CCCCCC";
                             else $bgcolor="#DFDFDF";

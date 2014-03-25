@@ -41,14 +41,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -58,7 +58,7 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
 if(getPermissionLevel($_SESSION['egps_username']) > $MINIMUM_AUTHORIZATION_LEVEL && !(isLocalAdministrator($_SESSION['egps_username']))) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -68,7 +68,7 @@ $permission_level=getPermissionLevel($_SESSION['egps_username']);
 if($permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -316,7 +316,7 @@ $szBackGetVars = substr($szBackGetVars, 0, -1);
 
                         <center><table width="80%" border="0"><tr>
                           <td align="center">
-                          <?php echo "<a href=\"" . IPP_PATH . "src/superuser_new_member_2.php?$szBackGetVars\"><img src=\"" . IPP_PATH  . "images/mainbutton.php?title=New Member\" border=0>\n";
+                          <?php echo "<a href=\"" . IPP_PATH . "superuser_new_member_2.php?$szBackGetVars\"><img src=\"" . IPP_PATH  . "images/mainbutton.php?title=New Member\" border=0>\n";
                           ?>
                           </td>
                         </tr>
@@ -356,7 +356,7 @@ $szBackGetVars = substr($szBackGetVars, 0, -1);
                         <HR>
 
                         <!--search fx
-                        <form enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/superuser_manage_users.php"; ?>" method="get">
+                        <form enctype="multipart/form-data" action="<?php echo IPP_PATH . "superuser_manage_users.php"; ?>" method="get">
                         <center><table width="80%"><tr>
                         <td align=center bgcolor="#E0E2F2">
                             Search Username:&nbsp;&nbsp;<input type="text" name="username" size="30">&nbsp;&nbsp;<input type="submit" value="Query">
@@ -367,7 +367,7 @@ $szBackGetVars = substr($szBackGetVars, 0, -1);
                         end search fx -->
 
                         <?php //display users... ?>
-                        <form name="userlist" onSubmit="return deleteChecked()" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/superuser_manage_users.php"; ?>" method="get">
+                        <form name="userlist" onSubmit="return deleteChecked()" enctype="multipart/form-data" action="<?php echo IPP_PATH . "superuser_manage_users.php"; ?>" method="get">
                         <center><table width="80%" border="0">
                         <input type="hidden" name="iCur" value="<?php echo $iCur; ?>">
                         <?php
@@ -416,7 +416,7 @@ $szBackGetVars = substr($szBackGetVars, 0, -1);
                             if($users_row['is_local_ipp_administrator']=='Y') { $temp_bgcolor=$bgcolor; $bgcolor="FF9999";}
                             echo "<tr>\n";
                             echo "<td bgcolor=\"#E0E2F2\"><input type=\"checkbox\" name=\"" . $users_row['egps_username'] . "\"></td>";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/superuser_manage_user.php?ippuserid=" . $users_row['egps_username'] . "\" class=\"default\">" . $users_row['egps_username'] . "</a></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "superuser_manage_user.php?ippuserid=" . $users_row['egps_username'] . "\" class=\"default\">" . $users_row['egps_username'] . "</a></td>\n";
                             echo "<td bgcolor=\"$bgcolor\" class=\"row_default\">" . $users_row['school_name'] . "</td>\n";
                             echo "<td bgcolor=\"$bgcolor\" class=\"row_default\">" . $level_row['level_name'];
                             if($users_row['is_local_ipp_administrator']=='Y') echo "<BR><B>(school ipp admin)<B>";
@@ -459,7 +459,7 @@ $szBackGetVars = substr($szBackGetVars, 0, -1);
         </tr>
         <tr>
             <td class="shadow-left">&nbsp;</td>
-            <td class="shadow-center"><table border="0" width="100%"><tr><td width="60"><a href="<?php echo IPP_PATH . "src/main.php"; ?>"><img src="<?php echo IPP_PATH; ?>images/back-arrow-white.png" border=0></a></td><td width="60"><a href="<?php echo IPP_PATH . "src/main.php"; ?>"><img src="<?php echo IPP_PATH; ?>images/homebutton-white.png" border=0></a></td><td valign="bottom" align="center">Logged in as: <?php echo $_SESSION['egps_username'];?></td><td width="60"><a href="<?php echo IPP_PATH;?>"><img src="<?php echo IPP_PATH; ?>images/logout-white.png" border=0></a></td></tr></table></td>
+            <td class="shadow-center"><table border="0" width="100%"><tr><td width="60"><a href="<?php echo IPP_PATH . "main.php"; ?>"><img src="<?php echo IPP_PATH; ?>images/back-arrow-white.png" border=0></a></td><td width="60"><a href="<?php echo IPP_PATH . "src/main.php"; ?>"><img src="<?php echo IPP_PATH; ?>images/homebutton-white.png" border=0></a></td><td valign="bottom" align="center">Logged in as: <?php echo $_SESSION['egps_username'];?></td><td width="60"><a href="<?php echo IPP_PATH;?>"><img src="<?php echo IPP_PATH; ?>images/logout-white.png" border=0></a></td></tr></table></td>
             <td class="shadow-right">&nbsp;</td>
         </tr>
         <tr>

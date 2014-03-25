@@ -43,14 +43,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -61,7 +61,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if(getPermissionLevel($_SESSION['egps_username']) > $MINIMUM_AUTHORIZATION_LEVEL && !(isLocalAdministrator($_SESSION['egps_username']))) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -140,7 +140,7 @@ if(isset($_GET['add_username'])) {
               if(isset($_GET['mail_notification'])) {
                  mail_notification(AddSlashes($_GET['add_username']),"This email has been sent to you to notify you that you have been added to the $IPP_ORGANIZATION online IPP system. You are able to access the system now by going to " . $IPP_PAGE_ROOT . ". Enter your username as '" .  $_GET['add_username'] . "'  and use the password '" . $pwd . "'");
               }
-              require(IPP_PATH . "src/superuser_manage_users.php");
+              require(IPP_PATH . "superuser_manage_users.php");
               exit();
           }
         }
@@ -168,14 +168,14 @@ if(isset($_GET['add_username'])) {
 //if($iNumResults > 50) {
 //    $MESSAGE = "";
 //    $MESSAGE = "Your selection yielded $iNumResults names. Please try to refine your search";
- //   require (IPP_PATH . "src/superuser_new_member.php");
+ //   require (IPP_PATH . "superuser_new_member.php");
  //   exit();
 //}
 
 //if($iNumResults <= 0) {
 //    $MESSAGE = "";
 //    $MESSAGE = "Your selection yielded $iNumResults names.";
-//    require (IPP_PATH . "src/superuser_new_member.php");
+//    require (IPP_PATH . "superuser_new_member.php");
 //    exit();
 //}
 
@@ -270,7 +270,7 @@ if(!$school_result) {
                         <BR>
 
                         <center>
-                        <form name="addName" ="multipart/form-data" action="<?php echo IPP_PATH . "src/superuser_new_member_2.php"; ?>" method="get" onSubmit="return CheckNum()">
+                        <form name="addName" ="multipart/form-data" action="<?php echo IPP_PATH . "superuser_new_member_2.php"; ?>" method="get" onSubmit="return CheckNum()">
                         <table border="0" cellpadding="0" cellspacing="0" width="80%">
                         <tr>
                           <td colspan="3">
@@ -393,8 +393,8 @@ if(!$school_result) {
             <td class="shadow-left">&nbsp;</td>
             <td class="shadow-center"><table border="0" width="100%"><tr><td><a href="
             <?php
-                echo IPP_PATH . "src/superuser_manage_users.php?$szBackGetVars";
-            ?>"><img src="<?php echo IPP_PATH; ?>images/back-arrow-white.png" border=0></a></td><td width="60"><a href="<?php echo IPP_PATH . "src/main.php"; ?>"><img src="<?php echo IPP_PATH; ?>images/homebutton-white.png" border=0></a></td><td valign="bottom" align="center">Logged in as: <?php echo $_SESSION['egps_username'];?></td><td align="right"><a href="<?php echo IPP_PATH;?>"><img src="<?php echo IPP_PATH; ?>images/logout-white.png" border=0></a></td></tr></table></td>
+                echo IPP_PATH . "superuser_manage_users.php?$szBackGetVars";
+            ?>"><img src="<?php echo IPP_PATH; ?>images/back-arrow-white.png" border=0></a></td><td width="60"><a href="<?php echo IPP_PATH . "main.php"; ?>"><img src="<?php echo IPP_PATH; ?>images/homebutton-white.png" border=0></a></td><td valign="bottom" align="center">Logged in as: <?php echo $_SESSION['egps_username'];?></td><td align="right"><a href="<?php echo IPP_PATH;?>"><img src="<?php echo IPP_PATH; ?>images/logout-white.png" border=0></a></td></tr></table></td>
             <td class="shadow-right">&nbsp;</td>
         </tr>
         <tr>

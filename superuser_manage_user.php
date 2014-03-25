@@ -41,14 +41,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -58,7 +58,7 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
 if(getPermissionLevel($_SESSION['egps_username']) > $MINIMUM_AUTHORIZATION_LEVEL && !(isLocalAdministrator($_SESSION['egps_username']))) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -97,7 +97,7 @@ if(isLocalAdministrator($_SESSION['egps_username']) && getPermissionLevel($_SESS
   if($user_row['school_code'] != $us_row['school_code']) {
      $MESSAGE = $MESSAGE . "You do not have permission to view this page. You must be in the same school as this person to edit their information. (" . $user_row['school_code'] . "!=" . $us_row['school_code'] . ")";
      IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-     require(IPP_PATH . 'src/security_error.php');
+     require(IPP_PATH . 'security_error.php');
      exit();
   }
 }
@@ -217,14 +217,14 @@ if(!$permission_result) {
 
                         <center><table width="80%" border="0"><tr>
                           <td align="center">
-                          <?php echo "<a href=\"" . IPP_PATH . "src/change_ipp_password.php?username=" . $user_row['egps_username'] . "\"><img src=\"" . IPP_PATH  . "images/mainbutton.php?title=Change Password\" border=0>\n";
+                          <?php echo "<a href=\"" . IPP_PATH . "change_ipp_password.php?username=" . $user_row['egps_username'] . "\"><img src=\"" . IPP_PATH  . "images/mainbutton.php?title=Change Password\" border=0>\n";
                           ?>
                           </td>
                         </tr>
                         </table></center><BR>
 
                         <center>
-                        <form enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/superuser_manage_user.php"; ?>" method="post">
+                        <form enctype="multipart/form-data" action="<?php echo IPP_PATH . "superuser_manage_user.php"; ?>" method="post">
                         <input type="hidden" name="ippuserid" value="<?php echo $user_row['egps_username']; ?>">
                         <table border="0" cellpadding="0" cellspacing="0" width="80%">
                         <tr>
@@ -296,8 +296,8 @@ if(!$permission_result) {
             <td class="shadow-left">&nbsp;</td>
             <td class="shadow-center"><table border="0" width="100%"><tr><td width="60"><a href="
             <?php
-                echo IPP_PATH . "src/superuser_manage_users.php?$szBackGetVars";
-            ?>"><img src="<?php echo IPP_PATH; ?>images/back-arrow-white.png" border=0></a></td><td width="60"><a href="<?php echo IPP_PATH . "src/main.php"; ?>"><img src="<?php echo IPP_PATH; ?>images/homebutton-white.png" border=0></a></td><td valign="bottom" align="center">Logged in as: <?php echo $_SESSION['egps_username'];?></td><td align="right"><a href="<?php echo IPP_PATH;?>"><img src="<?php echo IPP_PATH; ?>images/logout-white.png" border=0></a></td></tr></table></td>
+                echo IPP_PATH . "superuser_manage_users.php?$szBackGetVars";
+            ?>"><img src="<?php echo IPP_PATH; ?>images/back-arrow-white.png" border=0></a></td><td width="60"><a href="<?php echo IPP_PATH . "main.php"; ?>"><img src="<?php echo IPP_PATH; ?>images/homebutton-white.png" border=0></a></td><td valign="bottom" align="center">Logged in as: <?php echo $_SESSION['egps_username'];?></td><td align="right"><a href="<?php echo IPP_PATH;?>"><img src="<?php echo IPP_PATH; ?>images/logout-white.png" border=0></a></td></tr></table></td>
             <td class="shadow-right">&nbsp;</td>
         </tr>
         <tr>

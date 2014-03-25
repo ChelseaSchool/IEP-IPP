@@ -46,14 +46,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -76,7 +76,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -131,7 +131,7 @@ if($have_write_permission && isset($_GET['modify'])) {
               mail_notification(AddSlashes($_GET['username']),"This email has been sent to you to notify you that your permission levels for " . $student_row['first_name'] . " " . $student_row['last_name'] . "'s IPP on the $IPP_ORGANIZATION online individual program plan system have been changed to " . mysql_real_escape_string($_GET['permission']) . " access.");
             }
             //we need to redirect back to main...
-            header("Location: " . IPP_PATH . "src/student_view.php?student_id=$student_id");
+            header("Location: " . IPP_PATH . "student_view.php?student_id=$student_id");
          }
        }
     }
@@ -291,7 +291,7 @@ if(!$support_result) {
 
                         <!-- BEGIN add supervisor -->
                         <center>
-                        <form name="edit_support_member" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/edit_support_member.php"; ?>" method="get" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
+                        <form name="edit_support_member" enctype="multipart/form-data" action="<?php echo IPP_PATH . "edit_support_member.php"; ?>" method="get" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
                         <table border="0" cellspacing="0" cellpadding ="0" width="80%">
                         <tr>
                           <td colspan="3">

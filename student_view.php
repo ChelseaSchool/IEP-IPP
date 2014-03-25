@@ -42,14 +42,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -60,7 +60,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -110,7 +110,7 @@ if($our_permission != "READ" && $our_permission != "WRITE" && $our_permission !=
   //we don't have permission...
   $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
   IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-  require(IPP_PATH . 'src/security_error.php');
+  require(IPP_PATH . 'security_error.php');
   exit();
 }
 
@@ -216,26 +216,26 @@ function get_age_by_date($yyyymmdd)
 
                         <center>
                         <?php $colour0="#DFDFDF"; $colour1="#CCCCCC"; ?>
-                        <center><a href="<?php echo IPP_PATH . "src/ipp_pdf.php?student_id=" . $student_row['student_id'] . "&file=ipp.pdf";?>" target="_blank"><img src="<?php echo IPP_PATH . "images/view-ippbutton.png";?>" border="0"></a>
+                        <center><a href="<?php echo IPP_PATH . "ipp_pdf.php?student_id=" . $student_row['student_id'] . "&file=ipp.pdf";?>" target="_blank"><img src="<?php echo IPP_PATH . "images/view-ippbutton.png";?>" border="0"></a>
                         </center>
                         <HR>
                         <!-- Nav -->
-                        <a href="<?php echo IPP_PATH . "src/guardian_view.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Guardians";?>" border="0"></a>
-                        <!--a href="<?php echo IPP_PATH . "src/supervisor_view.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Supervisor";?>" border="0"></a -->
-                        <a href="<?php echo IPP_PATH . "src/strength_need_view.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Strength+%26+Needs"?>" border="0"></a>
-                        <a href="<?php echo IPP_PATH . "src/coordination_of_services.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Coord.+of+Services"?>" border="0"></a>
-                        <a href="<?php echo IPP_PATH . "src/achieve_level.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Achieve+Level"?>" border="0"></a>
-                        <a href="<?php echo IPP_PATH . "src/medical_info.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Medical+Info."?>" border="0"></a>
-                        <a href="<?php echo IPP_PATH . "src/medication_view.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Medication"?>" border="0"></a>
-                        <a href="<?php echo IPP_PATH . "src/testing_to_support_code.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Testing+to+Support"?>" border="0"></a>
-                        <a href="<?php echo IPP_PATH . "src/background_information.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Background+Info"?>" border="0"></a>
-                        <a href="<?php echo IPP_PATH . "src/year_end_review.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Year+End+Review"?>" border="0" target="_blank"></a>
-                        <a href="<?php echo IPP_PATH . "src/anecdotals.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Anecdotals"?>" border="0"></a>
-                        <a href="<?php echo IPP_PATH . "src/assistive_technology.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Asst.+Technology"?>" border="0"></a>
-                        <a href="<?php echo IPP_PATH . "src/transition_plan.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Transition+Plan"?>" border="0"></a>
-                        <a href="<?php echo IPP_PATH . "src/accomodations.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Accommodations"?>" border="0"></a>
-                        <a href="<?php echo IPP_PATH . "src/snapshots.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Snapshots"?>" border="0"></a>
-                        <a href="<?php echo IPP_PATH . "src/long_term_goal_view.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Goals"?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "guardian_view.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Guardians";?>" border="0"></a>
+                        <!--a href="<?php echo IPP_PATH . "supervisor_view.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Supervisor";?>" border="0"></a -->
+                        <a href="<?php echo IPP_PATH . "strength_need_view.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Strength+%26+Needs"?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "coordination_of_services.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Coord.+of+Services"?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "achieve_level.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Achieve+Level"?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "medical_info.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Medical+Info."?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "medication_view.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Medication"?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "testing_to_support_code.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Testing+to+Support"?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "background_information.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Background+Info"?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "year_end_review.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Year+End+Review"?>" border="0" target="_blank"></a>
+                        <a href="<?php echo IPP_PATH . "anecdotals.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Anecdotals"?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "assistive_technology.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Asst.+Technology"?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "transition_plan.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Transition+Plan"?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "accomodations.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Accommodations"?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "snapshots.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Snapshots"?>" border="0"></a>
+                        <a href="<?php echo IPP_PATH . "long_term_goal_view.php?student_id=" . $student_row['student_id'];?>"><img src="<?php echo IPP_PATH . "images/mainbutton.php?title=Goals"?>" border="0"></a>
                         <!-- end NAV -->
                         <HR>
                         <!-- BEGIN CODING INFORMATION -->
@@ -259,7 +259,7 @@ function get_age_by_date($yyyymmdd)
                                 ?>
                             </td>
                             <td width="100" rowspan="7" valign="center">
-                               <a href="<?php echo IPP_PATH . "src/coding.php?student_id=" . $student_row['student_id'];?>""><img src="<?php echo IPP_PATH . "images/smallbutton.php?title=Edit";?>" border="0">
+                               <a href="<?php echo IPP_PATH . "coding.php?student_id=" . $student_row['student_id'];?>""><img src="<?php echo IPP_PATH . "images/smallbutton.php?title=Edit";?>" border="0">
                             </td>
                         </tr>
                         </table>
@@ -283,9 +283,9 @@ function get_age_by_date($yyyymmdd)
                             <td width="100" rowspan="7" valign="center">
                                <?php
                                    if($our_permission != "WRITE" && $our_permission != "ASSIGN" && $our_permission !="ALL")
-                                       echo "<a href=\"" . IPP_PATH . "src/security_error.php\" onClick=\"return noPermission();\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Modify\" border=\"0\">";
+                                       echo "<a href=\"" . IPP_PATH . "security_error.php\" onClick=\"return noPermission();\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Modify\" border=\"0\">";
                                    else
-                                       echo "<a href=\"" . IPP_PATH . "src/edit_general.php?student_id=" . $student_row['student_id'] . "\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Edit\" border=\"0\">";
+                                       echo "<a href=\"" . IPP_PATH . "edit_general.php?student_id=" . $student_row['student_id'] . "\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Edit\" border=\"0\">";
                                ?>
                             </td>
                         </tr>
@@ -351,7 +351,7 @@ function get_age_by_date($yyyymmdd)
                                 <?php echo $supervisor_row['egps_username'];?>
                             </td>
                             <td width="100" rowspan="7" valign="center">
-                               <a href="<?php echo IPP_PATH . "src/supervisor_view.php?student_id=" . $_GET['student_id'];?>"><img src="<?php echo IPP_PATH . "images/smallbutton.php?title=Change";?>" border="0">
+                               <a href="<?php echo IPP_PATH . "supervisor_view.php?student_id=" . $_GET['student_id'];?>"><img src="<?php echo IPP_PATH . "images/smallbutton.php?title=Change";?>" border="0">
                             </td>
                         </tr>
                         </table>
@@ -370,9 +370,9 @@ function get_age_by_date($yyyymmdd)
                         <td rowspan="<?php $iSupportNum=mysql_num_rows($support_member_result); if($iSupportNum <= 0) echo "2"; else echo $iSupportNum +1; ?>" valign="center" align="right" width="100">
                             <?php
                             if($our_permission !="ALL" && $our_permission !="ASSIGN" && $our_permission != "WRITE" )
-                                echo "<a href=\"" . IPP_PATH . "src/security_error.php\" onClick=\"return noPermission();\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Modify\" border=\"0\">";
+                                echo "<a href=\"" . IPP_PATH . "security_error.php\" onClick=\"return noPermission();\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Modify\" border=\"0\">";
                             else
-                                echo "<a href=\"" . IPP_PATH . "src/modify_ipp_permission.php?student_id=" . $_GET['student_id'] . "\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Manage\" border=\"0\">";
+                                echo "<a href=\"" . IPP_PATH . "modify_ipp_permission.php?student_id=" . $_GET['student_id'] . "\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Manage\" border=\"0\">";
                             ?>
                         </td>
                         <?php
@@ -418,9 +418,9 @@ function get_age_by_date($yyyymmdd)
                             </td>
                             <td width="100" rowspan="7" valign="center">
                               <?php if($our_permission !="ALL" && $our_permission !="ASSIGN" && $our_permission != "WRITE" )
-                               echo "<a href=\"" . IPP_PATH . "src/school_history.php?student_id=" . $student_id . "\" onClick=\"return noPermission();\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Move/History" . "\" border=\"0\">";
+                               echo "<a href=\"" . IPP_PATH . "school_history.php?student_id=" . $student_id . "\" onClick=\"return noPermission();\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Move/History" . "\" border=\"0\">";
                               else
-                               echo "<a href=\""  . IPP_PATH . "src/school_history.php?student_id=" . $student_id . "\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Move/History" . "\" border=\"0\">";
+                               echo "<a href=\""  . IPP_PATH . "school_history.php?student_id=" . $student_id . "\"><img src=\"" . IPP_PATH . "images/smallbutton.php?title=Move/History" . "\" border=\"0\">";
                               ?>
                             </td>
                         </tr>

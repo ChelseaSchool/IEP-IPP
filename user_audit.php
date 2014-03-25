@@ -41,14 +41,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -64,7 +64,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -243,7 +243,7 @@ if(1==0 && isset($_POST['add_accomodation']) && $have_write_permission) {
 
                         <!-- BEGIN choose user -->
                         <center>
-                        <form name="chooseuser" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/user_audit.php"; ?>" method="post" >
+                        <form name="chooseuser" enctype="multipart/form-data" action="<?php echo IPP_PATH . "user_audit.php"; ?>" method="post" >
                         <table border="0" cellspacing="0" cellpadding ="0" width="80%">
                         <tr>
                           <td colspan="3">
@@ -265,7 +265,7 @@ if(1==0 && isset($_POST['add_accomodation']) && $have_write_permission) {
                         <!-- END choose user -->
 
                         <!-- BEGIN audit table -->
-                        <form name="accomodationhistory" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/accomodations.php"; ?>" method="get">
+                        <form name="accomodationhistory" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "accomodations.php"; ?>" method="get">
                         <input type="hidden" name="student_id" value="<?php echo $student_id ?>">
                         <center><table width="80%" border="0">
 
@@ -286,9 +286,9 @@ if(1==0 && isset($_POST['add_accomodation']) && $have_write_permission) {
 
                             echo "<tr>\n";
                             echo "<td bgcolor=\"#F4EFCF\"><input type=\"checkbox\" name=\"" . $user_row['uid'] . "\"></td>";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/student_view.php?student_id=" . $user_row['student_id'] . "\" class=\"editable_text\">" . $user_row['last_name']  ."</a></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/student_view.php?student_id=" . $user_row['student_id'] . "\" class=\"editable_text\">" . $user_row['first_name'] . "</a></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/modify_ipp_permission.php?student_id=" . $user_row['student_id'] . "\" class=\"editable_text\">" . $user_row['permission'] . "</a></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "student_view.php?student_id=" . $user_row['student_id'] . "\" class=\"editable_text\">" . $user_row['last_name']  ."</a></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "student_view.php?student_id=" . $user_row['student_id'] . "\" class=\"editable_text\">" . $user_row['first_name'] . "</a></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "modify_ipp_permission.php?student_id=" . $user_row['student_id'] . "\" class=\"editable_text\">" . $user_row['permission'] . "</a></td>\n";
                             echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>" . $school_row['school_name'] . "</center></td>";
                             if($bgcolor=="#DFDFDF") $bgcolor="#CCCCCC";
                             else $bgcolor="#DFDFDF";

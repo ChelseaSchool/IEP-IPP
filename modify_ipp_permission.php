@@ -52,14 +52,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -70,7 +70,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -101,7 +101,7 @@ if($our_permission != "WRITE" && $our_permission != "ASSIGN" && $our_permission 
   //we don't have permission...
   $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
   IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-  require(IPP_PATH . 'src/security_error.php');
+  require(IPP_PATH . 'security_error.php');
   exit();
 }
 
@@ -278,7 +278,7 @@ $total_support_members = mysql_num_rows($total_result);
 
                         <!-- BEGIN new member add -->
                         <center>
-                        <form enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/new_ipp_permission.php"; ?>" method="get" <?php if($our_permission != "ASSIGN" && $our_permission != "ALL") echo "onSubmit=\"return noPermission();\"" ?>>
+                        <form enctype="multipart/form-data" action="<?php echo IPP_PATH . "new_ipp_permission.php"; ?>" method="get" <?php if($our_permission != "ASSIGN" && $our_permission != "ALL") echo "onSubmit=\"return noPermission();\"" ?>>
                         <table border="0" cellpadding="0" cellspacing="0" width="80%">
                         <input type="hidden" name="student_id" value="<?php echo $student_id;?>">
                         <tr>
@@ -298,7 +298,7 @@ $total_support_members = mysql_num_rows($total_result);
                         <!-- END NEW MEMBER ADD -->
 
                         <?php //display support... ?>
-                        <form name="userlist" onSubmit="return deleteChecked()" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/modify_ipp_permission.php"; ?>" method="post">
+                        <form name="userlist" onSubmit="return deleteChecked()" enctype="multipart/form-data" action="<?php echo IPP_PATH . "modify_ipp_permission.php"; ?>" method="post">
                         <input type="hidden" name="student_id" value="<?php echo $student_id ?>">
                         <center><table width="80%" border="0">
 
@@ -340,7 +340,7 @@ $total_support_members = mysql_num_rows($total_result);
                             echo "<td bgcolor=\"$bgcolor\">";
                             if (!$users_row['support_area']) echo "None assigned"; else echo $users_row['support_area'];
                             echo "</td>\n";
-                            echo "<td bgcolor=\"#E0E2F2\"><a href=\"" . IPP_PATH . "src/edit_support_member.php?username=" . $users_row['egps_username'] . "&student_id=$student_id" . "\"><IMG SRC=\"" . IPP_PATH . "images/smallbutton.php?title=Edit\" border=\"0\"></a></td>";
+                            echo "<td bgcolor=\"#E0E2F2\"><a href=\"" . IPP_PATH . "edit_support_member.php?username=" . $users_row['egps_username'] . "&student_id=$student_id" . "\"><IMG SRC=\"" . IPP_PATH . "images/smallbutton.php?title=Edit\" border=\"0\"></a></td>";
                             echo "</tr>\n";
                             if($bgcolor=="#DFDFDF") $bgcolor="#CCCCCC";
                             else $bgcolor="#DFDFDF";

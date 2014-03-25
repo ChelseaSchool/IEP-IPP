@@ -58,14 +58,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -86,7 +86,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -273,7 +273,7 @@ if(!$support_member_result) {
 
                         <!-- BEGIN add supervisor -->
                         <center>
-                        <form name="addsupervisor" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/supervisor_view.php"; ?>" method="get" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
+                        <form name="addsupervisor" enctype="multipart/form-data" action="<?php echo IPP_PATH . "supervisor_view.php"; ?>" method="get" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
                         <table border="0" cellspacing="0" cellpadding ="0" width="80%">
                         <tr>
                           <td colspan="3">
@@ -299,7 +299,7 @@ if(!$support_member_result) {
                            <td valign="bottom" bgcolor="#E0E2F2">Position:</td><td bgcolor="#E0E2F2"><input type="text" name="position" value="" size="30"></td>
                         </tr>
                         <tr>
-                            <td valign="bottom" align="center" bgcolor="#E0E2F2" colspan="3"><p class="small_text">*Must be present in <?php echo $student_row['first_name'] . " " . $student_row['last_name'] ?>'s <a href="<?php echo IPP_PATH; ?>/src/modify_ipp_permission.php?student_id=<?php echo $student_id; ?>">support member</a> list</p></td>
+                            <td valign="bottom" align="center" bgcolor="#E0E2F2" colspan="3"><p class="small_text">*Must be present in <?php echo $student_row['first_name'] . " " . $student_row['last_name'] ?>'s <a href="<?php echo IPP_PATH; ?>/modify_ipp_permission.php?student_id=<?php echo $student_id; ?>">support member</a> list</p></td>
                         </tr>
                         </table>
                         </form>
@@ -307,7 +307,7 @@ if(!$support_member_result) {
                         <!-- END add supervisor -->
 
                         <!-- BEGIN ipp history table -->
-                        <form name="supervisorhistorylist" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/supervisor_view.php"; ?>" method="get">
+                        <form name="supervisorhistorylist" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "supervisor_view.php"; ?>" method="get">
                         <input type="hidden" name="student_id" value="<?php echo $student_id ?>">
                         <center><table width="80%" border="0">
 

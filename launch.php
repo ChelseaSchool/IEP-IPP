@@ -91,7 +91,7 @@ if(isset($MESSAGE)) $MESSAGE = $MESSAGE; else $MESSAGE="";
                                 <?php if ($MESSAGE) { echo "<center><table width=\"80%\"><tr><td><p class=\"message\">" . $MESSAGE . "</p></td></tr></table></center>";} ?>
 
                         <center><table><tr><td><center><p class="header">- <?php echo $IPP_ORGANIZATION; ?> -<BR></p></center></td></tr></table></center>
-                        <form enctype="multipart/form-data" action="<?php echo IPP_PATH . 'src/launch.php'; ?>" method="post" onSubmit="Start('<?php echo IPP_PATH . "src/login.php";?>')")>
+                        <form enctype="multipart/form-data" action="<?php echo IPP_PATH . 'launch.php'; ?>" method="post" onSubmit="Start('<?php echo IPP_PATH . "src/login.php";?>')")>
                         <center><table>
                         <tr>
                             <td>

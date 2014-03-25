@@ -56,14 +56,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -84,7 +84,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -300,7 +300,7 @@ if(!$anecdotal_result) {
 
                         <!-- BEGIN add new entry -->
                         <center>
-                        <form name="add_anecdotal" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/anecdotals.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
+                        <form name="add_anecdotal" enctype="multipart/form-data" action="<?php echo IPP_PATH . "anecdotals.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
                         <table border="0" cellspacing="0" cellpadding ="0" width="80%">
                         <tr>
                           <td colspan="3">
@@ -332,9 +332,9 @@ if(!$anecdotal_result) {
                         </form>
                         </center>
                         <!-- END add new entry -->
-                        <center><a href="<?php echo IPP_PATH . "src/anecdotal_pdf.php?student_id=$student_id" ?>" target="_blank">Generate PDF copy</a><BR></center>
+                        <center><a href="<?php echo IPP_PATH . "anecdotal_pdf.php?student_id=$student_id" ?>" target="_blank">Generate PDF copy</a><BR></center>
                         <!-- BEGIN annecdotals table -->
-                        <form name="anecdotal" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/anecdotals.php"; ?>" method="get">
+                        <form name="anecdotal" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "anecdotals.php"; ?>" method="get">
                         <input type="hidden" name="student_id" value="<?php echo $student_id ?>">
                         <center><table width="80%" border="0" cellpadding="0" cellspacing="1">
                         <tr><td colspan="7">Anecdotals (click to edit):</td></tr>
@@ -347,9 +347,9 @@ if(!$anecdotal_result) {
                             echo "<tr>\n";
                             echo "<td bgcolor=\"#E0E2F2\"><input type=\"checkbox\" name=\"" . $anecdotal_row['uid'] . "\"></td>";
                             echo "<td bgcolor=\"$bgcolor\" class=\"row_default\">" . $anecdotal_row['uid'] . "</td>";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_anecdotal.php?uid=" . $anecdotal_row['uid'] . "\" class=\"editable_text\">" . checkspelling($anecdotal_row['report'])  ."</td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_anecdotal.php?uid=" . $anecdotal_row['uid'] . "\" class=\"editable_text\">" . $anecdotal_row['date']  ."</td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>"; if($anecdotal_row['filename'] =="") echo "-none-"; else echo "<a href=\"" . IPP_PATH . "src/get_attached.php?table=anecdotal&uid=" . $anecdotal_row['uid'] ."&student_id=" . $student_id ."\">Download</a>"; echo "</center></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_anecdotal.php?uid=" . $anecdotal_row['uid'] . "\" class=\"editable_text\">" . checkspelling($anecdotal_row['report'])  ."</td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_anecdotal.php?uid=" . $anecdotal_row['uid'] . "\" class=\"editable_text\">" . $anecdotal_row['date']  ."</td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>"; if($anecdotal_row['filename'] =="") echo "-none-"; else echo "<a href=\"" . IPP_PATH . "get_attached.php?table=anecdotal&uid=" . $anecdotal_row['uid'] ."&student_id=" . $student_id ."\">Download</a>"; echo "</center></td>\n";
                             echo "</tr>\n";
                             if($bgcolor=="#DFDFDF") $bgcolor="#CCCCCC";
                             else $bgcolor="#DFDFDF";

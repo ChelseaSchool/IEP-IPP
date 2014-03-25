@@ -45,14 +45,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -62,7 +62,7 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
 if(getPermissionLevel($_SESSION['egps_username']) > $MINIMUM_AUTHORIZATION_LEVEL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -72,7 +72,7 @@ $permission_level=getPermissionLevel($_SESSION['egps_username']);
 if($permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -88,7 +88,7 @@ if(isset($_POST['duplicate_x'])) {
         }
    }
    if($count > 1) $MESSAGE = "You can only duplicate one program plan at a time<BR>";
-   else header("Location: " . IPP_PATH . "src/duplicate.php?student_id=" . $id);
+   else header("Location: " . IPP_PATH . "duplicate.php?student_id=" . $id);
 
 }
 
@@ -304,7 +304,7 @@ $szBackGetVars = substr($szBackGetVars, 0, -1);
 
                         <center><table width="80%" border="0"><tr>
                           <td align="center">
-                          <?php echo "<a href=\"" . IPP_PATH . "src/new_student.php?iLimit=$iLimit&iCur=$iCur&field=" . $FIELD . "&szSearchVal=" . $szSearchVal . "&SEARCH=1\"><img src=\"" . IPP_PATH  . "images/mainbutton.php?title=Add Student\" border=0 ";
+                          <?php echo "<a href=\"" . IPP_PATH . "new_student.php?iLimit=$iLimit&iCur=$iCur&field=" . $FIELD . "&szSearchVal=" . $szSearchVal . "&SEARCH=1\"><img src=\"" . IPP_PATH  . "images/mainbutton.php?title=Add Student\" border=0 ";
                           if($permission_level > 50) echo "onClick=\"return noPermission();\"";  //Teachers and up only!
                           echo ">\n";
                           ?>
@@ -314,7 +314,7 @@ $szBackGetVars = substr($szBackGetVars, 0, -1);
                         <HR>
 
                         <!-- search fx >
-                        <form enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/manage_student.php"; ?>" method="get">
+                        <form enctype="multipart/form-data" action="<?php echo IPP_PATH . "manage_student.php"; ?>" method="get">
                         <center><table width="80%" cellspacing="0">
                         <tr>
                         <td align=center bgcolor="#E0E2F2">&nbsp;
@@ -337,7 +337,7 @@ $szBackGetVars = substr($szBackGetVars, 0, -1);
                         <-- end search fx -->
 
 
-                        <form name="studentlist" onSubmit="return deleteChecked()" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/manage_student.php"; ?>" method="post">
+                        <form name="studentlist" onSubmit="return deleteChecked()" enctype="multipart/form-data" action="<?php echo IPP_PATH . "manage_student.php"; ?>" method="post">
                         <center><table width="80%" border="0">
                         <?php
                         $bgcolor = "#DFDFDF";
@@ -374,13 +374,13 @@ $szBackGetVars = substr($szBackGetVars, 0, -1);
                             $school_colour = "#". $student_row['red'] . $student_row['green'] . $student_row['blue'];
                             echo "<td bgcolor=\"$school_colour\"><input type=\"checkbox\" name=\"" . $student_row['student_id'] . "\" value=\"" . $student_row['first_name'] . " " . $student_row['last_name'] . "\"></td>";
                             echo "<td bgcolor=\"$bgcolor\" class=\"row_default\">" . $student_row['student_id'] . "<p></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\"><a href=\"" . IPP_PATH . "src/student_view.php?student_id=" . $student_row['student_id'] . "\" class=\"default\" ";
+                            echo "<td bgcolor=\"$bgcolor\"><a href=\"" . IPP_PATH . "student_view.php?student_id=" . $student_row['student_id'] . "\" class=\"default\" ";
                             if($current_student_permission == "NONE" || $current_student_permission == "ERROR") {
                                 echo "onClick=\"return noPermission();\" ";
                             }
                             echo ">" .  $student_row['last_name'] . "," . $student_row['first_name'] . "</a>";
                             if($current_student_permission == "READ" || $current_student_permission != "WRITE" || $current_student_permission != "ALL") {
-                                echo "<a href=\"". IPP_PATH . "src/ipp_pdf.php?student_id=" . $student_row['student_id'] . "\" class=\"default\" target=\"_blank\"";
+                                echo "<a href=\"". IPP_PATH . "ipp_pdf.php?student_id=" . $student_row['student_id'] . "\" class=\"default\" target=\"_blank\"";
                                 if($current_student_permission == "NONE" || $current_student_permission == "ERROR") {
                                 echo "onClick=\"return noPermission();\" ";
                                 }

@@ -41,14 +41,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -59,7 +59,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -235,7 +235,7 @@ mysql_data_seek($ltg_result,0)
 <!--end temporary printout of tables-->
 
                         <!-- BEGIN  Goals -->
-                        <table width="100%" border="0"><tr><td><p class="header" align="left">Goals:&nbsp;&nbsp;</p></td><td align="center" valign="bottom"><?php echo "<form enctype=\"multipart/form-data\" action=\"" . IPP_PATH . "src/superuser_add_goals.php" . "\" method=\"get\"><p class=\"small_text\">Add Program Area:&nbsp;&nbsp;<input class=\"small\" type=\"text\" size=\"30\" name=\"category_name\"></form>"; ?></td></tr></table>
+                        <table width="100%" border="0"><tr><td><p class="header" align="left">Goals:&nbsp;&nbsp;</p></td><td align="center" valign="bottom"><?php echo "<form enctype=\"multipart/form-data\" action=\"" . IPP_PATH . "superuser_add_goals.php" . "\" method=\"get\"><p class=\"small_text\">Add Program Area:&nbsp;&nbsp;<input class=\"small\" type=\"text\" size=\"30\" name=\"category_name\"></form>"; ?></td></tr></table>
                         <BR>
                         <center>
                         <table width="80%" border="0" cellpadding="0" cellspacing="0">
@@ -246,7 +246,7 @@ mysql_data_seek($ltg_result,0)
                         while($ltg) {
                             $area_type_id=$ltg['uid'];
                             //echo "<tr><td colspan=\"2\">storage: $area_type_id, array: " . $ltg['uid'] . "</td></tr>";
-                            echo "<tr><td colspan=\"2\" class=\"wrap_top\">Program Area:&nbsp;&nbsp;" . $ltg['type'] . "&nbsp;<a href=\"". IPP_PATH . "src/superuser_add_goals.php?delete_area=" . $ltg['uid'] . "\"><img align=\"top\" border=\"0\" alt=\"Delete\" src=\"" . IPP_PATH . "images/close.gif" . "\"></a></td></tr>\n";
+                            echo "<tr><td colspan=\"2\" class=\"wrap_top\">Program Area:&nbsp;&nbsp;" . $ltg['type'] . "&nbsp;<a href=\"". IPP_PATH . "superuser_add_goals.php?delete_area=" . $ltg['uid'] . "\"><img align=\"top\" border=\"0\" alt=\"Delete\" src=\"" . IPP_PATH . "images/close.gif" . "\"></a></td></tr>\n";
                             while($ltg['uid'] == $area_type_id) {
                                 //echo "<tr><td colspan=\"2\" class=\"wrap_top\">Area:&nbsp;&nbsp;" . $ltg['type'] .  "," . $ltg['uid'] . "," . $ltg['goal'] . "</td></tr>\n";
                                 echo "<td class=\"wrap_left\" width=\"50%\" bgcolor=\"#FFFFFF\"><center><p class=\"small_text\"><b>Long Term Goals</b></p></td><td class=\"wrap_right\" width=\"50%\" bgcolor=\"#FFFFFF\"><center><p class=\"small_text\"><b>Short Term Objectives</b></p></td>";
@@ -256,7 +256,7 @@ mysql_data_seek($ltg_result,0)
                                     if(!$ltg['goal'])
                                         echo "<td class=\"wrap_left\" width=\"50%\" bgcolor=\"$colour\"><center><p class=\"small_text\"><b>-none-</b></p></td>";
                                     else
-                                        echo "<td class=\"wrap_left\" width=\"50%\" bgcolor=\"$colour\" valign=\"top\"><p class=\"small_text\"><b>" . $ltg['goal'] . "&nbsp;<a href=\"". IPP_PATH . "src/superuser_add_goals.php?delete_ltg=" . $ltg['ltg_id'] . "\"><img align=\"top\" border=\"0\" alt=\"Delete\" src=\"" . IPP_PATH . "images/close.gif" . "\"></a></b></p></td>";
+                                        echo "<td class=\"wrap_left\" width=\"50%\" bgcolor=\"$colour\" valign=\"top\"><p class=\"small_text\"><b>" . $ltg['goal'] . "&nbsp;<a href=\"". IPP_PATH . "superuser_add_goals.php?delete_ltg=" . $ltg['ltg_id'] . "\"><img align=\"top\" border=\"0\" alt=\"Delete\" src=\"" . IPP_PATH . "images/close.gif" . "\"></a></b></p></td>";
                                     if(!$ltg['ltg_id'])
                                         $stg_query="SELECT * FROM typical_short_term_objective WHERE ltg_id IS NULL";
                                     else
@@ -269,10 +269,10 @@ mysql_data_seek($ltg_result,0)
                                        if(mysql_num_rows($stg_result) < 1) echo "<center><p class=\"small_text\">-no short term goals added-</p></center>";
                                        while($stg=mysql_fetch_array($stg_result)) {
                                           echo "<ul>";
-                                          echo "<li><b><p class=\"small_text\">" . $stg['goal'] . "</b>&nbsp;<a href=\"". IPP_PATH . "src/superuser_add_goals.php?delete_stg=" . $stg['stg_id'] . "\"><img align=\"top\" border=\"0\" alt=\"Delete\" src=\"" . IPP_PATH . "images/close.gif" . "\"></a>\n";
+                                          echo "<li><b><p class=\"small_text\">" . $stg['goal'] . "</b>&nbsp;<a href=\"". IPP_PATH . "superuser_add_goals.php?delete_stg=" . $stg['stg_id'] . "\"><img align=\"top\" border=\"0\" alt=\"Delete\" src=\"" . IPP_PATH . "images/close.gif" . "\"></a>\n";
                                           echo "</ul>";
                                        }
-                                       echo "<BR><p class=\"small_text\"><center><form enctype=\"multipart/form-data\" action=\"" . IPP_PATH . "src/superuser_add_goals.php" . "\" method=\"get\"><p class=\"small_text\">Add Short Term Goal:<BR><input class=\"small\" type=\"text\" size=\"30\" name=\"stg_name\"><input type=\"hidden\" name=\"ltg_id\" value=\"" . $ltg['ltg_id'] . "\"></form></p></center>";
+                                       echo "<BR><p class=\"small_text\"><center><form enctype=\"multipart/form-data\" action=\"" . IPP_PATH . "superuser_add_goals.php" . "\" method=\"get\"><p class=\"small_text\">Add Short Term Goal:<BR><input class=\"small\" type=\"text\" size=\"30\" name=\"stg_name\"><input type=\"hidden\" name=\"ltg_id\" value=\"" . $ltg['ltg_id'] . "\"></form></p></center>";
                                        echo "</td>";
                                     }
                                     if($colour==$colour0) $colour=$colour1; else $colour=$colour0;
@@ -283,7 +283,7 @@ mysql_data_seek($ltg_result,0)
                                 }
                                 //$ltg = mysql_fetch_array($ltg_result);
                             }
-                            echo "<tr><td class=\"wrap_bottom_left\" width=\"50%\"><center><form enctype=\"multipart/form-data\" action=\"" . IPP_PATH . "src/superuser_add_goals.php" . "\" method=\"get\"><p class=\"small_text\">Add Long Term Goal:</p><input class=\"small\" type=\"text\" size=\"30\" name=\"ltg_name\"><input type=\"hidden\" name=\"program_area\" value=\"$area_type_id\"></form></center></td>";
+                            echo "<tr><td class=\"wrap_bottom_left\" width=\"50%\"><center><form enctype=\"multipart/form-data\" action=\"" . IPP_PATH . "superuser_add_goals.php" . "\" method=\"get\"><p class=\"small_text\">Add Long Term Goal:</p><input class=\"small\" type=\"text\" size=\"30\" name=\"ltg_name\"><input type=\"hidden\" name=\"program_area\" value=\"$area_type_id\"></form></center></td>";
                             echo "<td class=\"wrap_bottom_right\" width=\"50%\">&nbsp;</td>";
                             echo "</tr>\n";
                             echo "<tr><td>&nbsp;</td><td width=\"50%\">&nbsp;</td></tr>";
@@ -307,11 +307,11 @@ mysql_data_seek($ltg_result,0)
                             else do {
                                 //loop through the long term goals in this program area...
                                 echo "<tr><td class=\"wrap_left\" bgcolor=\"$colour0\" width=\"50%\"><center>" . $ltg['goal'] . "</center>";
-                                echo "</td><td class=\"wrap_right\" width=\"100\" bgcolor=\"$colour0\"><center><p class=\"small_text\">Add Short Term Goal</p><form enctype=\"multipart/form-data\" action=\"" . IPP_PATH . "src/superuser_add_goals.php" . "\" method=\"get\"><input type=\"text\" size=\"30\" name=\"stg_name\"><input type=\"hidden\" name=\"ltg_parent\" value=\"" . $ltg['ltg_id'] . "\"></form></center></td></tr>\n";
+                                echo "</td><td class=\"wrap_right\" width=\"100\" bgcolor=\"$colour0\"><center><p class=\"small_text\">Add Short Term Goal</p><form enctype=\"multipart/form-data\" action=\"" . IPP_PATH . "superuser_add_goals.php" . "\" method=\"get\"><input type=\"text\" size=\"30\" name=\"stg_name\"><input type=\"hidden\" name=\"ltg_parent\" value=\"" . $ltg['ltg_id'] . "\"></form></center></td></tr>\n";
                             } while($ltg = mysql_fetch_array($ltg_result) && $ltg['ltg_id'] == $ltg_id);
 
 
-                            echo "<tr><td class=\"wrap_bottom_left\" width=\"50%\"><center><p class=\"small_text\">Add Long Term Goal</p><form enctype=\"multipart/form-data\" action=\"" . IPP_PATH . "src/superuser_add_goals.php" . "\" method=\"get\"><input type=\"text\" size=\"30\" name=\"ltg_name\"><input type=\"hidden\" name=\"program_area\" value=\"$area_type_id\"></form></center></td>";
+                            echo "<tr><td class=\"wrap_bottom_left\" width=\"50%\"><center><p class=\"small_text\">Add Long Term Goal</p><form enctype=\"multipart/form-data\" action=\"" . IPP_PATH . "superuser_add_goals.php" . "\" method=\"get\"><input type=\"text\" size=\"30\" name=\"ltg_name\"><input type=\"hidden\" name=\"program_area\" value=\"$area_type_id\"></form></center></td>";
                             echo "<td class=\"wrap_bottom_right\" width=\"100\">&nbsp;</td>";
                             echo "</tr>\n";
                             echo "<tr><td>&nbsp;</td><td width=\"100\">&nbsp;</td></tr>";
@@ -335,8 +335,8 @@ mysql_data_seek($ltg_result,0)
             <td class="shadow-left">&nbsp;</td>
             <td class="shadow-center"><table border="0" width="100%"><tr><td width="60"><a href="
             <?php
-                echo IPP_PATH . "src/main.php";
-            ?>"><img src="<?php echo IPP_PATH; ?>images/back-arrow.png" border=0></a></td><td width="60"><a href="<?php echo IPP_PATH . "src/main.php"; ?>"><img src="<?php echo IPP_PATH; ?>images/homebutton.png" border=0></a></td><td valign="bottom" align="center">Logged in as: <?php echo $_SESSION['egps_username'];?></td><td align="right"><a href="<?php echo IPP_PATH;?>"><img src="<?php echo IPP_PATH; ?>images/logout.png" border=0></a></td></tr></table></td>
+                echo IPP_PATH . "main.php";
+            ?>"><img src="<?php echo IPP_PATH; ?>images/back-arrow.png" border=0></a></td><td width="60"><a href="<?php echo IPP_PATH . "main.php"; ?>"><img src="<?php echo IPP_PATH; ?>images/homebutton.png" border=0></a></td><td valign="bottom" align="center">Logged in as: <?php echo $_SESSION['egps_username'];?></td><td align="right"><a href="<?php echo IPP_PATH;?>"><img src="<?php echo IPP_PATH; ?>images/logout.png" border=0></a></td></tr></table></td>
             <td class="shadow-right">&nbsp;</td>
         </tr>
         <tr>

@@ -48,14 +48,14 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
     if(!validate( $_POST['LOGIN_NAME'] ,  $_POST['PASSWORD'] )) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 } else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-        require(IPP_PATH . 'src/login.php');
+        require(IPP_PATH . 'login.php');
         exit();
     }
 }
@@ -76,7 +76,7 @@ $permission_level = getPermissionLevel($_SESSION['egps_username']);
 if( $permission_level > $MINIMUM_AUTHORIZATION_LEVEL || $permission_level == NULL) {
     $MESSAGE = $MESSAGE . "You do not have permission to view this page (IP: " . $_SERVER['REMOTE_ADDR'] . ")";
     IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
-    require(IPP_PATH . 'src/security_error.php');
+    require(IPP_PATH . 'security_error.php');
     exit();
 }
 
@@ -477,7 +477,7 @@ if(!$school_result) {
                         <BR>
                         <!-- BEGIN move -->
                         <center>
-                        <form name="add_history" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/school_history.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
+                        <form name="add_history" enctype="multipart/form-data" action="<?php echo IPP_PATH . "school_history.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
                         <table border="0" cellspacing="0" cellpadding ="0" width="80%">
                         <tr>
                           <td colspan="3">
@@ -515,7 +515,7 @@ if(!$school_result) {
                         <BR>
                         <!-- BEGIN move out of district-->
                         <center>
-                        <form name="add_history" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/school_history.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
+                        <form name="add_history" enctype="multipart/form-data" action="<?php echo IPP_PATH . "school_history.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
                         <table border="0" cellspacing="0" cellpadding ="0" width="80%">
                         <tr>
                           <td colspan="3">
@@ -544,7 +544,7 @@ if(!$school_result) {
                         <BR>
                         <!-- BEGIN add new entry -->
                         <center>
-                        <form name="add_history" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/school_history.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
+                        <form name="add_history" enctype="multipart/form-data" action="<?php echo IPP_PATH . "school_history.php"; ?>" method="post" <?php if(!$have_write_permission) echo "onSubmit=\"return noPermission();\"" ?>>
                         <table border="0" cellspacing="0" cellpadding ="0" width="80%">
                         <tr>
                           <td colspan="3">
@@ -606,7 +606,7 @@ if(!$school_result) {
                         <!-- END add new entry -->
 
                         <!-- BEGIN history table -->
-                        <form name="schoolhistorylist" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "src/school_history.php"; ?>" method="get">
+                        <form name="schoolhistorylist" onSubmit="return confirmChecked();" enctype="multipart/form-data" action="<?php echo IPP_PATH . "school_history.php"; ?>" method="get">
                         <input type="hidden" name="student_id" value="<?php echo $student_id ?>">
                         <center><table width="80%" border="0" cellpadding="0" cellspacing="1">
                         <tr><td colspan="7">School History (click fields to edit):</td></tr>
@@ -619,16 +619,16 @@ if(!$school_result) {
                             echo "<tr>\n";
                             echo "<td bgcolor=\"#E0E2F2\"><input type=\"checkbox\" name=\"" .$history_row['uid'] . "\"></td>";
                             echo "<td bgcolor=\"$bgcolor\" class=\"row_default\">" .$history_row['uid'] . "</td>";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_school_history.php?uid=" .$history_row['uid'] . "\" class=\"editable_text\">" .$history_row['school_name']  ."</a></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_school_history.php?uid=" .$history_row['uid'] . "\" class=\"editable_text\">" .$history_row['school_address']  ."</a></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_school_history.php?uid=" .$history_row['uid'] . "\" class=\"editable_text\">" .$history_row['start_date'] . "-";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_school_history.php?uid=" .$history_row['uid'] . "\" class=\"editable_text\">" .$history_row['school_name']  ."</a></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_school_history.php?uid=" .$history_row['uid'] . "\" class=\"editable_text\">" .$history_row['school_address']  ."</a></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_school_history.php?uid=" .$history_row['uid'] . "\" class=\"editable_text\">" .$history_row['start_date'] . "-";
                             if($history_row['end_date'] != "") echo $history_row['end_date'];
                             else echo "current";
                             echo "</a></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center><a href=\"" . IPP_PATH . "src/edit_school_history.php?uid=" .$history_row['uid'] . "\" class=\"editable_text\">" .$history_row['grades'] . "</a></center></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center><a href=\"" . IPP_PATH . "src/edit_school_history.php?uid=" .$history_row['uid'] . "\" class=\"editable_text\">" .$history_row['ipp_present'] . "</a></center></td>\n";
-                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "src/edit_school_history.php?uid=" .$history_row['uid'] . "\" class=\"editable_text\">" . preg_replace('/\n/','<BR>',$history_row['accommodations']) . "</a></td>\n";
-                            //echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>"; if($coord_row['report_in_file'] =="") echo "-none"; else echo "<a href=\"javascript: openDoc('" . IPP_PATH . "src/get_attached.php?table=coordination_of_services&uid=" .$history_row['uid'] ."&student_id=" . $student_id ."','_doc')"  . "\">File</a>"; echo "</center></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center><a href=\"" . IPP_PATH . "edit_school_history.php?uid=" .$history_row['uid'] . "\" class=\"editable_text\">" .$history_row['grades'] . "</a></center></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center><a href=\"" . IPP_PATH . "edit_school_history.php?uid=" .$history_row['uid'] . "\" class=\"editable_text\">" .$history_row['ipp_present'] . "</a></center></td>\n";
+                            echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><a href=\"" . IPP_PATH . "edit_school_history.php?uid=" .$history_row['uid'] . "\" class=\"editable_text\">" . preg_replace('/\n/','<BR>',$history_row['accommodations']) . "</a></td>\n";
+                            //echo "<td bgcolor=\"$bgcolor\" class=\"row_default\"><center>"; if($coord_row['report_in_file'] =="") echo "-none"; else echo "<a href=\"javascript: openDoc('" . IPP_PATH . "get_attached.php?table=coordination_of_services&uid=" .$history_row['uid'] ."&student_id=" . $student_id ."','_doc')"  . "\">File</a>"; echo "</center></td>\n";
                             echo "</tr>\n";
                             if($bgcolor=="#DFDFDF") $bgcolor="#CCCCCC";
                             else $bgcolor="#DFDFDF";
