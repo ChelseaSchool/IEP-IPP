@@ -1,8 +1,8 @@
 <?php
 
-/**@BUG Everything is commented? Can't find comment to close
- * @DETAILS
- * #NOTES
+/**@bug Everything is commented? Can't find comment to close
+ * @detail	Not convinced this is used. Search code base
+ * @todo
  * 1. Absract: configurable values on install
  * 2. should be handled by install wizard; default values or example values are ok; required values should be clearly marked as such
  * 3. page needs copyright header per GPL recommendation
@@ -11,7 +11,7 @@
     
 
     //page stuff
-    $page_title = "IEP-IPP Special Education Program Plans";
+    $page_title = "MyIEP";
     $IPP_PAGE_ROOT = "http://192.168.0.103"; //the root page.
 
     //path to large logo for branding
