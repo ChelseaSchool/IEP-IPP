@@ -55,7 +55,9 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
         require(IPP_PATH . 'login.php');
         exit();
     }
-} else {
+} 
+
+else {
     if(!validate()) {
         $MESSAGE = $MESSAGE . $error_message;
         IPP_LOG($MESSAGE,$_SESSION['egps_username'],'ERROR');
@@ -66,10 +68,10 @@ if(isset($_POST['LOGIN_NAME']) && isset( $_POST['PASSWORD'] )) {
 //************* SESSION active past here **************************/
 
 $student_id="";
-if(isset($_GET['student_id'])) $student_id= $_GET['student_id'];
-if(isset($_POST['student_id'])) $student_id = $_POST['student_id'];
+if (isset($_GET['student_id'])) $student_id= $_GET['student_id'];
+if (isset($_POST['student_id'])) $student_id = $_POST['student_id'];
 
-if($student_id=="") {
+if ($student_id=="") {
    //we shouldn't be here without a student id.
    echo "You've entered this page without supplying a valid student id. Fatal, quitting";
    exit();
@@ -119,7 +121,7 @@ if($our_permission == "WRITE" || $our_permission == "ASSIGN" || $our_permission 
     $have_write_permission = false;
 }
 
-//************** validated past here SESSION ACTIVE WRITE PERMISSION CONFIRMED****************
+//************** validated past here SESSION ACTIVE WRITE PERMISSION CONFIRMED****************/
 
 $student_query = "SELECT * FROM student WHERE student_id = " . mysql_real_escape_string($student_id);
 $student_result = mysql_query($student_query);
