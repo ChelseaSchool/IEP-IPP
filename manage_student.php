@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @BRIEF 	manage authorized users
+ * @brief 	manage authorized users
  * 
  */
  
@@ -12,11 +12,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100;  //all, decide in the page
 /**
  * superuser_manage_users.php -- IPP manage users main menu
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: June 06, 2005
- * By: M. Nielsen
+ * 
  * Modified: June 01, 2006
  *
  */
@@ -451,6 +451,6 @@ $szBackGetVars = substr($szBackGetVars, 0, -1);
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

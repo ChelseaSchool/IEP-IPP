@@ -3,8 +3,8 @@
 /**
  * login.php -- simple login screen
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * This a simple login screen.
  * Created: June 06, 2005
@@ -126,6 +126,6 @@ if(isset($LOGIN_NAME)) $LOGIN_NAME = $LOGIN_NAME; else $LOGIN_NAME="";
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

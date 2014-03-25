@@ -19,11 +19,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * edit_coordination_of_services.php
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: March 11, 2005
- * By: M. Nielsen
+ * 
  * Modified: February 17,2007 M. Nielsen
  *
  */
@@ -250,7 +250,7 @@ if(isset($_POST['edit_coordination_of_services'])) {
         for($i=0;$i<$numRows;$i++){
           // build JavaScript array from result set
           $javascript.=$arrayName.'['.$i.']="';
-          $tempOutput='';
+          $tempOutput=;
           //output only the first column
           $row=mysql_fetch_array($dataSource);
 
@@ -422,6 +422,6 @@ if(isset($_POST['edit_coordination_of_services'])) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

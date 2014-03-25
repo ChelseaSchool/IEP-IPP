@@ -19,11 +19,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * edit_testing_to_support_code.php
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: March 11, 2005
- * By: M. Nielsen
+ * 
  * Modified: February 17, 2007
  *
  */
@@ -348,6 +348,6 @@ if(isset($_POST['edit_testing']) && $have_write_permission) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

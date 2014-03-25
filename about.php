@@ -3,24 +3,14 @@
 //the authorization level for this page!
 $MINIMUM_AUTHORIZATION_LEVEL = 100;    //anybody
 
-/**
- * about.php information about the program
- *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
- *
- * Created: January 21,2007
- * By: M. Nielsen
- * Modified:
- *
- */
+
 
 /**
  * Path for IPP required files.
  */
 
-
 define('IPP_PATH','./');
+
 require_once(IPP_PATH . 'etc/init.php');
 
 header('Pragma: no-cache'); //don't cache this page!
@@ -37,12 +27,7 @@ header('Pragma: no-cache'); //don't cache this page!
             @import "<?php echo IPP_PATH;?>layout/greenborders.css";
         -->
     </style>
-    <!-- All code Copyright &copy; 2005 Grasslands Regional Division #6.
-         -Concept and Design by Grasslands IPP Focus Group 2005
-         -Programming and Database Design by M. Nielsen, Grasslands
-          Regional Division #6
-         -CSS and layout images are courtesy A. Clapton.
-     -->
+    
 </HEAD>
     <BODY>
         <table class="shadow" border="0" cellspacing="0" cellpadding="0" align="center">  
@@ -65,9 +50,10 @@ header('Pragma: no-cache'); //don't cache this page!
 
                         <center><table width="80%" cellspacing="0" cellpadding="0"><tr><td><center><p class="header">- About -</p></center></td></tr></table></center>
                         <BR>
-                        The IEP-IPP program (Version <?php echo $IPP_CURRENT_VERSION; ?>) was developed through the coordinated efforts of many people at Grasslands Public Schools.
+                        MyIEP version <?php echo $IPP_CURRENT_VERSION; ?> is a fork of IEP-IPP (which was developed through the coordinated efforts of many people at Grasslands Public Schools).
+                        
+                        MyIEP is under development by students at <a href="http://chelseaschool.edu">Chelsea School</a> in Hyattsville, MD.
             <br><br>
-            Development on version 2 is in progress. If you have suggestions for improvment or would like to participate in the development or design please visit the IEP-IPP web page at <a href="http://www.iep-ipp.com" target="_blank">http://www.iep-ipp.com/</a><BR><BR>Support and bug reporting can also be found through the IEP-IPP web page.
                         </div>
                         </td>
                     </tr>
@@ -89,6 +75,6 @@ header('Pragma: no-cache'); //don't cache this page!
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

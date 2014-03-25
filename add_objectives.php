@@ -21,11 +21,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody check within
 /**
  * add_objectives.php
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: March 02, 2005
- * By: M. Nielsen
+ * 
  * Modified: April 19,2006
  *
  */
@@ -327,7 +327,7 @@ $MESSAGE = $MESSAGE . "<BR>Please add short term objectives to achieve this goal
         for($i=0;$i<$numRows;$i++){
           // build JavaScript array from result set
           $javascript.=$arrayName.'['.$i.']="';
-          $tempOutput='';
+          $tempOutput=;
           //output only the first column
           $row=mysql_fetch_array($dataSource);
 
@@ -557,6 +557,6 @@ $MESSAGE = $MESSAGE . "<BR>Please add short term objectives to achieve this goal
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

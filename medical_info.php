@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @BRIEF 	display medical information
+ * @brief 	display medical information
  * 
  */
  
@@ -11,11 +11,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * medical_info.php  //students general medical information.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: July 26, 2005
- * By: M. Nielsen
+ * 
  * Modified: February 17, 2007. M. Nielsen
  *
  */
@@ -449,6 +449,6 @@ if(!$medical_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

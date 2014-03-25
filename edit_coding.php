@@ -1,6 +1,6 @@
 <?php
 /**
- * @BRIEF 	edit student learning code
+ * @brief 	edit student learning code
  * 
  */
  
@@ -18,11 +18,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 50; //Teaching Staff
 /**
  * edit_coding.php -- change student code.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: March 11, 2006
- * By: M. Nielsen
+ * 
  * Modified: February 17, 2007 M. Nielsen
  *
  */
@@ -281,6 +281,6 @@ if(!$valid_code_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

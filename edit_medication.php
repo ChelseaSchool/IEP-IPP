@@ -1,6 +1,6 @@
 <?php
 /**
- * @BRIEF 	edit student medications
+ * @brief 	edit student medications
  * 
  */
  
@@ -11,11 +11,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody check within
 /**
  * medication.php -- strength and needs management.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: July 27, 2005
- * By: M. Nielsen
+ * 
  * Modified: February 17, 2007.
  *
  */
@@ -271,6 +271,6 @@ if(isset($_POST['edit_medication']) && $have_write_permission) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

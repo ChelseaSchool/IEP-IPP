@@ -20,11 +20,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100;    //everybody (do checks within document)
  * guardian_notes.php -- add/edit/delete guardian information
  * INPUTS: guardian_id,student_id as _GET.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: July 14, 2005
- * By: M. Nielsen
+ * 
  * Modified:  July 21,2005
  *
  */
@@ -301,6 +301,6 @@ mysql_data_seek($guardian_result,0);
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

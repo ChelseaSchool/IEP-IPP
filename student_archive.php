@@ -22,11 +22,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100;  //all, decide in the page
 /**
  * superuser_manage_users.php -- IPP manage users main menu
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: June 06, 2005
- * By: M. Nielsen
+ * 
  * Modified: March 11, 2005
  * Modified: April 20, 2006 M. Nielsen (empty school table not showing in list)
  *
@@ -381,6 +381,6 @@ $szBackGetVars = substr($szBackGetVars, 0, -1);
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

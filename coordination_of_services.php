@@ -21,11 +21,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * coordination_of_services.php
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: July 25, 2005
- * By: M. Nielsen
+ * 
  * Modified: March 11, 2005
  *
  */
@@ -308,7 +308,7 @@ if(!$coord_result) {
         for($i=0;$i<$numRows;$i++){
           // build JavaScript array from result set
           $javascript.=$arrayName.'['.$i.']="';
-          $tempOutput='';
+          $tempOutput=;
           //output only the first column
           $row=mysql_fetch_array($dataSource);
 
@@ -526,6 +526,6 @@ if(!$coord_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

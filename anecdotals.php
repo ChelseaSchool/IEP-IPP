@@ -20,11 +20,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * anecdotals.php
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: February 22, 2005
- * By: M. Nielsen
+ * 
  * Modified: March 30, 2006.
  * Modified: February 17, 2007
  */
@@ -398,6 +398,6 @@ if(!$anecdotal_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

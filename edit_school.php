@@ -20,11 +20,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 0; //only super administrator
 /**
  * school_info.php -- add school.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: March 26, 2005
- * By: M. Nielsen
+ * 
  * Modified:
  *
  */
@@ -265,6 +265,6 @@ if(isset($_POST['edit_school'])) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

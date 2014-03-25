@@ -20,11 +20,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100;  //don't rely on this on this page.
 /**
  * change_ipp_password.php --
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: March 26, 2006.
- * By: M. Nielsen
+ * 
  * Modified: February 11, 2007. M. Nielsen
  *
  */
@@ -271,6 +271,6 @@ if(!$permission_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

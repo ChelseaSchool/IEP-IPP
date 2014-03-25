@@ -1,6 +1,6 @@
 <?php
 /**
- * @BRIEF 	history of student's previous schools
+ * @brief 	history of student's previous schools
  * 
  */
  
@@ -12,11 +12,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * edit_school_history.php
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: March 18, 2006
- * By: M. Nielsen
+ * 
  * Modified:
  *
  */
@@ -231,7 +231,7 @@ $enum_options_type = mysql_enum_values("school_history","ipp_present");
         for($i=0;$i<$numRows;$i++){
           // build JavaScript array from result set
           $javascript.=$arrayName.'['.$i.']="';
-          $tempOutput='';
+          $tempOutput=;
           //output only the first column
           $row=mysql_fetch_array($dataSource);
 
@@ -438,6 +438,6 @@ $enum_options_type = mysql_enum_values("school_history","ipp_present");
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

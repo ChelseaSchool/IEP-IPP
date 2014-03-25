@@ -387,6 +387,6 @@ $enum_options_area = mysql_enum_values("area_of_strength_or_need","area");
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

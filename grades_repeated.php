@@ -19,11 +19,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * grades_repeatd.php -- list of grades failed and repeated.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: July 28, 2005
- * By: M. Nielsen
+ * 
  * Modified:
  *
  */
@@ -325,6 +325,6 @@ if(!$grades_repeated_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

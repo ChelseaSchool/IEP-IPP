@@ -21,11 +21,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * background_information.php -- strength and needs management.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: July 21, 2005
- * By: M. Nielsen
+ * 
  * Modified: February 22, 2006
  * Modified: February 17, 2007
  */
@@ -355,6 +355,6 @@ $enum_options_type = mysql_enum_values("background_info","type");
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

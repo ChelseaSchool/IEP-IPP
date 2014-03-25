@@ -1,6 +1,6 @@
 <?php
 /**
- * @BRIEF 	update a bug report
+ * @brief 	update a bug report
  * 
  */
  
@@ -18,11 +18,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 60; //teaching assistants and up
 /**
  * edit_bug.php.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: March 13, 2006
- * By: M. Nielsen
+ * 
  * Modified:
  *
  */
@@ -294,6 +294,6 @@ $enum_options_type = mysql_enum_values("bugs","status");
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

@@ -21,12 +21,12 @@ $MINIMUM_AUTHORIZATION_LEVEL = 0; //superadmin only
 /**
  * backup_dabase.php
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Dump of database for superadmin users only
  * Created: June 15, 2006
- * By: M. Nielsen
+ * 
  * Modified:
  *
  */
@@ -106,7 +106,7 @@ if (!$backup->connected) { die('Error: '.$backup->mysql_error); }
 $backup->list_tables();
 
 //reset buffer
-$buffer = '';
+$buffer = ;
 
 //go through all tables and dump them to buffer
 foreach ($backup->tables as $table) {

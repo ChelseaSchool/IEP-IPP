@@ -1,6 +1,6 @@
 <?php
 /** @file
- * @BRIEF 	unsure?
+ * @brief 	unsure?
  * @copyright 	2014 Chelsea School 
  * @copyright 	2005 Grasslands Regional Division #6
  * @copyright		This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by
@@ -25,11 +25,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 60; //TA
 /**
  * edit_general.php -- add student
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: June 21, 2005
- * By: M. Nielsen
+ * 
  * Modified:  March 30, 2005
  * Modified:  February 17, 2007
  *
@@ -344,6 +344,6 @@ if(!$student_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

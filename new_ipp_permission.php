@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @BRIEF 	assign new permissions
+ * @brief 	assign new permissions
  * 
  */
  
@@ -13,11 +13,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 60;  //TA
 /**
  * new_ipp_permission.php --
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: June 08, 2005
- * By: M. Nielsen
+ * 
  * Modified: June 20,2005
  * Modified: February 17, 2007
  *
@@ -199,7 +199,7 @@ if(isset($_POST['ACTION']) && $_POST['ACTION']=="Add" && isset($_POST['add_usern
         for($i=0;$i<$numRows;$i++){
           // build JavaScript array from result set
           $javascript.=$arrayName.'['.$i.']="';
-          $tempOutput='';
+          $tempOutput=;
           //output only the first column
           $row=mysql_fetch_array($dataSource);
 
@@ -374,6 +374,6 @@ if(isset($_POST['ACTION']) && $_POST['ACTION']=="Add" && isset($_POST['add_usern
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

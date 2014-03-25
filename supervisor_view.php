@@ -22,12 +22,12 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * supervisor_view.php -- change supervisor/view history.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: July 18, 2005
- * By: M. Nielsen
- * Modified: January 2,2006  By: M. Nielsen
+ * 
+ * Modified: January 2,2006  
  * Modified: February 17, 2007 M. Nielsen
  *
  */
@@ -387,6 +387,6 @@ if(!$support_member_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

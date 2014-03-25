@@ -21,11 +21,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100;    //everybody (do checks within document)
 /**
  * add_goal_1.php -- manage student guardians
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: February 20, 2006
- * By: M. Nielsen
+ * 
  * Modified: February 17, 2007 M. Nielsen
  *
  */
@@ -172,7 +172,7 @@ if(!$goal_category_name_result) {
         for($i=0;$i<$numRows;$i++){
           // build JavaScript array from result set
           $javascript.=$arrayName.'['.$i.']="';
-          $tempOutput='';
+          $tempOutput=;
           //output only the first column
           $row=mysql_fetch_array($dataSource);
 
@@ -325,6 +325,6 @@ if(!$goal_category_name_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

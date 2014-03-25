@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @BRIEF 	main menu
+ * @brief 	main menu
  * 
  */
  
@@ -11,11 +11,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100;
 /**
  * main.php -- main menu
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: May 13, 2005
- * By: M. Nielsen
+ * 
  * Modified: June 06, 2005
  * Modified: February 10, 2007
  */
@@ -153,6 +153,6 @@ if(!$services) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

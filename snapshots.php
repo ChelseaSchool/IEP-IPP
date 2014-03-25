@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @BRIEF 	?
+ * @brief 	?
  * 
  */
  
@@ -12,11 +12,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * snapshots.php  //students general medical information.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: July 26, 2005
- * By: M. Nielsen
+ * 
  * Modified:
  *
  */
@@ -300,6 +300,6 @@ if(!$snapshot_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

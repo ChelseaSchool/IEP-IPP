@@ -138,8 +138,8 @@ $address_id = $target_row['address_id'];
 if(isset($_GET['update'])) {
     //check if we don't have an address id...if no we add a new one
     //and update guardian...
-    if($address_id == '') {
-        $create_address_query = "INSERT INTO address (city) VALUES ('')";
+    if($address_id == ) {
+        $create_address_query = "INSERT INTO address (city) VALUES ()";
         $create_address_result = mysql_query($create_address_query);
         if(!$create_address_result) {
              $error_message = $error_message . "Database query failed (" . __FILE__ . ":" . __LINE__ . "): " . mysql_error() . "<BR>Query: '$create_address_query'<BR>";
@@ -379,6 +379,6 @@ mysql_data_seek($target_result,0);
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

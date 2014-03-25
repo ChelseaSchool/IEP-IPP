@@ -21,11 +21,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * anecdotal_pdf.php
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: February 17, 2006
- * By: M. Nielsen
+ * 
  * Modified: February 17, 2007 M. Nielsen
  *
  */

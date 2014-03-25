@@ -1,6 +1,6 @@
 <?php
 /**
- * @BRIEF 	display guardian information
+ * @brief 	display guardian information
  * 
  */
  
@@ -11,11 +11,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100;    //everybody (do checks within document)
 /**
  * guardian_view.php -- manage student guardians
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: June 21, 2005
- * By: M. Nielsen
+ * 
  * Modified:  March 06, 2006.
  *
  */
@@ -450,6 +450,6 @@ if($our_permission != "WRITE" && $our_permission != "ASSIGN" && $our_permission 
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

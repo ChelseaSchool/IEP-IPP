@@ -1,6 +1,6 @@
 <?php
 /**
- * @BRIEF 	produces IEP PDF report
+ * @brief 	produces IEP PDF report
  * 
  */
  
@@ -21,11 +21,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * coordination_of_services.php
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: Feb 15, 2006
- * By: M. Nielsen
+ * 
  * Modified:
  *
  */

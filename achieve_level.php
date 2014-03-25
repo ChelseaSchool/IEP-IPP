@@ -20,11 +20,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * achieve_level.php
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: July 26, 2005
- * By: M. Nielsen
+ * 
  * Modified: February 17,2006
  * Modified: February 17, 2007 M. Nielsen
  */
@@ -413,6 +413,6 @@ if(!$performance_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

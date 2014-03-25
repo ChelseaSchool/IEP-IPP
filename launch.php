@@ -21,8 +21,8 @@
  *               the rationale behind this is to get a window
  *               without navigational and file bars.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * This a simple login screen.
  * Created: June 06, 2005
@@ -132,6 +132,6 @@ if(isset($MESSAGE)) $MESSAGE = $MESSAGE; else $MESSAGE="";
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

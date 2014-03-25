@@ -106,7 +106,7 @@ if(!$student_result) {
 
 //check if we are modifying a student...
 if(isset($_POST['add_asst_tech']) && $have_write_permission) {
-  if($_POST['technology'] == '') {
+  if($_POST['technology'] == ) {
     $MESSAGE = $MESSAGE . "You must supply information on the techology<BR>";
   } else {
     //we add the entry.
@@ -184,7 +184,7 @@ if(!$asst_tech_result) {
         for($i=0;$i<$numRows;$i++){
           // build JavaScript array from result set
           $javascript.=$arrayName.'['.$i.']="';
-          $tempOutput='';
+          $tempOutput=;
           //output only the first column
           $row=mysql_fetch_array($dataSource);
 
@@ -376,6 +376,6 @@ if(!$asst_tech_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

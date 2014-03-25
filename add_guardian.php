@@ -21,11 +21,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100;    //everybody (do checks within document)
 /**
  * add_guardian.php -- add student guardian
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: July 07, 2005
- * By: M. Nielsen
+ * 
  * Modified: February 17,2007.
  *
  */
@@ -247,6 +247,6 @@ if(isset($_GET['add_guardian'])) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @BRIEF 	add student
+ * @brief 	add student
  * 
  */
  
@@ -13,11 +13,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 50;
 /**
  * new_student.php -- add student
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: June 13, 2005
- * By: M. Nielsen
+ * 
  * Modified: January 11,2007
  *
  */
@@ -350,6 +350,6 @@ if(!$school_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

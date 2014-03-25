@@ -1,6 +1,6 @@
 <?php
 /**
- * @BRIEF 	revise or edit student demographics
+ * @brief 	revise or edit student demographics
  * 
  */
  
@@ -12,11 +12,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * edit_background_information.php -- strength and needs management.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: March 12, 2005
- * By: M. Nielsen
+ * 
  * Modified:
  *
  */
@@ -264,6 +264,6 @@ $enum_options_type = mysql_enum_values("background_info","type");
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

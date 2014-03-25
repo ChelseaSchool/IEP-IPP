@@ -22,11 +22,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * edit_strength_need.php -- strength and needs management.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: March 11, 2005
- * By: M. Nielsen
+ * 
  * Modified: February 17
  *
  */
@@ -248,6 +248,6 @@ if(isset($_POST['edit_strength_or_need']) && $have_write_permission) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @BRIEF 	view student's medications
+ * @brief 	view student's medications
  * 
  */
  
@@ -13,11 +13,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody check within
 /**
  * medication.php -- strength and needs management.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: July 27, 2005
- * By: M. Nielsen
+ * 
  * Modified: February 17,2007 M. Nielsen
  *
  */
@@ -348,6 +348,6 @@ if(!$medication_result) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

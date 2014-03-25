@@ -20,11 +20,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 60;    //Teaching staff and up
 /**
  * modify_ipp_permissions.php -- manage this ipps permissions.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: June 15, 2005
- * By: M. Nielsen
+ * 
  * Modified: July 21, 2005
  * Modified: February 17, 2007  By M. Nielsen
  *
@@ -396,6 +396,6 @@ $total_support_members = mysql_num_rows($total_result);
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>

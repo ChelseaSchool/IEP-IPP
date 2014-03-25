@@ -1,6 +1,6 @@
 <?php
 /**
- * @BRIEF 	edit student medical information
+ * @brief 	edit student medical information
  * 
  */
  
@@ -12,11 +12,11 @@ $MINIMUM_AUTHORIZATION_LEVEL = 100; //everybody
 /**
  * medical_info.php  //students general medical information.
  *
- * Copyright (c) 2005 Grasslands Regional Division #6
- * All rights reserved
+ * 
+ * 
  *
  * Created: July 26, 2005
- * By: M. Nielsen
+ * 
  * Modified: February 17, 2007 M. Nielsne
  *
  */
@@ -349,6 +349,6 @@ if(isset($_POST['edit_medical_info']) && $have_write_permission) {
             <td class="shadow-bottomRight"></td>
         </tr>
         </table> 
-        <center>System Copyright &copy; 2005 Grasslands Regional Division #6.</center>
+        
     </BODY>
 </HTML>
