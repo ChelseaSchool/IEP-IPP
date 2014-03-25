@@ -18,17 +18,6 @@
 //the authorization level for this page!
 $MINIMUM_AUTHORIZATION_LEVEL = 100;    //everybody (do checks within document)
 
-/**
- * add_goal_1.php -- manage student guardians
- *
- * 
- * 
- *
- * Created: February 20, 2006
- * 
- * Modified: February 17, 2007 M. Nielsen
- *
- */
 
 /**
  * Path for IPP required files.
@@ -211,7 +200,7 @@ if(!$goal_category_name_result) {
 
 ?> 
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!DOCTYPE HTML>
 <HTML>
 <HEAD>
     <META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=UTF-8">
