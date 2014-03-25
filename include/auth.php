@@ -291,25 +291,25 @@
         switch($PERMISSION_LEVEL) {
             case 0: // super administrator level
                 //array_push($retval,new service("Manage IPP Users",IPP_PATH . "''superuser_manage_users.php"));
-                array_push($retval,new service("View Logs",IPP_PATH . "''superuser_view_logs.php"));
+                array_push($retval,new service("View Logs",IPP_PATH . "superuser_view_logs.php"));
                 //$retval[0] = new service("Manage IPP Users",IPP_PATH . "''superuser_manage_users.php");
                 //$retval[1] = new service("Manage IPP Users",IPP_PATH . "''superuser_manage_users.php");
-                array_push($retval,new service("Schools",IPP_PATH . "''school_info.php"));
-                array_push($retval,new service("Manage Codes",IPP_PATH . "''superuser_manage_coding.php"));
-                array_push($retval,new service("User Audit",IPP_PATH . "''user_audit.php"));
+                array_push($retval,new service("Schools",IPP_PATH . "school_info.php"));
+                array_push($retval,new service("Manage Codes",IPP_PATH . "superuser_manage_coding.php"));
+                array_push($retval,new service("User Audit",IPP_PATH . "user_audit.php"));
             case 10: //admin
             case 20: //asst.admin.
                 //array_push($retval,new service("Program Areas",IPP_PATH . "''superuser_add_program_area.php"));
-                array_push($retval,new service("Goals Database",IPP_PATH . "''superuser_add_goals.php"));
+                array_push($retval,new service("Goals Database",IPP_PATH . "superuser_add_goals.php"));
             case 30: //principal...
             case 40: //vice principal
             case 50: //Teaching Staff Level
             case 60: //Teaching Asst.
-                array_push($retval,new service("Archives",IPP_PATH . "''student_archive.php"));
-                //array_push($retval,new service("Bugs",IPP_PATH . "''bug_report.php"));
-                array_push($retval,new service("Students",IPP_PATH . "''manage_student.php"));
+                array_push($retval,new service("Archives",IPP_PATH . "student_archive.php"));
+                //array_push($retval,new service("Bugs",IPP_PATH . "bug_report.php"));
+                array_push($retval,new service("Students",IPP_PATH . "manage_student.php"));
             case 100:
-                array_push($retval,new service("Change Password",IPP_PATH . "''change_ipp_password.php"));
+                array_push($retval,new service("Change Password",IPP_PATH . "change_ipp_password.php"));
             break;
             default:
              $error_message = $error_message . "You are not an authorized support member(" . __FILE__ . ":" . __LINE__ . ")<BR>";
