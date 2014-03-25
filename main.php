@@ -29,6 +29,7 @@ else $MESSAGE = "";
 
 define('IPP_PATH','./');
 
+
 /* eGPS required files. */
 require_once(IPP_PATH . 'etc/init.php');
 require_once(IPP_PATH . 'include/db.php');
