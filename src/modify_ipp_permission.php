@@ -152,6 +152,18 @@ $student_row=mysql_fetch_array($student_result);
 
 
 //get a list of all support members for this IPP...
+/** @fn		getSupportMembers()
+ *  @breif	get IEP team members
+ *  @details 	{unclear wrritng}
+ *  @param 	none
+ *  @return 	NULL or $results
+ *  @bug	none
+ *  @todo 	Rename to get_IEP_team_members to meat standards
+*/
+
+
+
+
 function getSupportMembers() {
     global $error_message,$iLimit,$iCur,$student_id;
     if(!connectIPPDB()) {
